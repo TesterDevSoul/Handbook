@@ -1,9 +1,10 @@
 # JUnit5基本注解 - @Test注解
 ## 本章要点
-1. 要点一
-1. 要点
-1. 要点
-1. 要点
+1. @Test 安装
+1. @Test 运行原理
+1. @Test 使用
+1. @Test 与main()区别
+1. @Test 计算器实战
 
 ## @Test注解
 
@@ -108,18 +109,19 @@
 
 `@Test`注解其实就是告诉 `JUnit5` 框架需要运行哪些测试方法。
 
-### 代码
+### @Test
 `@Test`注解修饰的方法相当于声明的**测试用例**。
 
-1. 编写类名一般以`Test`开头或结尾。
-1. `@Test`注解导包为`org.junit.jupiter.api.Test`。
-1. `@Test`注解修饰方法，放在方法上方。
-1. `@Test`注解修饰的方法返回值类型为`void`。
+1. 编写类名一般以`Test`开头或结尾。「类名规范」
+1. `@Test`注解导包为`org.junit.jupiter.api.Test`。「注解导包」
+1. `@Test`注解是方法上的注解。「注解位置」
+    >`@Test`注解修饰方法时，放在方法上方。
+1. `@Test`修饰的方法没有**返回值**，即返回值类型为`void`。「注解修饰方法返回值」
 1. `@Test`注解修饰的方法可直接运行。
+1. 一个测试类里可以有多个`@Test`注解修饰的方法。「注解个数」
+1. `@Test`注解修饰的方法内编写的内容为：测试用例执行的具体内容及断言结果。「用例编写」
 
-
-### 示例
-#### 初步编写
+### Hello @Test
 ```java
 import org.junit.jupiter.api.Test;
 
@@ -134,6 +136,10 @@ public class An_01Test_Test {
 
 注意⚠️：
 - 导包不要导错，不要导其他框架的`Test`包。
+#### IDEA运行
+由于目前测试类下只有一个测试用例，则可以直接点**类左侧的运行**按钮，同样，也可以直接点击`@Test`注解修饰的方法的左侧的运行按钮。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104143613.png)
+
 
 ### 与Java的main()区别
 - Class类中**方法个数不同**
@@ -144,38 +150,73 @@ public class An_01Test_Test {
   - 可以单独的运行每一个@Test注解修饰的方法，互不影响
 
 
- * 1. @Test注解修饰的方法可直接运行「@Test注解 是方法上的」
- * 2. 一个测试类里可以有多个@Test注解修饰的方法
- * 3. @Test注解作用类似Java代码中的main()方法入口
- * 4. @Test注解修饰的方法没有返回值，即方法声明时为void
- * 5. @Test注解里面编写的内容是测试用例执行的具体内容及断言结果
 
+### 计算器测试用例
+#### 被测系统
+- `sum()`：加法，连续加
+  - 可以传入参数为单个`int`也可以为数组`int[]`
+  - 如果传入的参数为**100**，报错
+    - 错误类型：`NumberFormatException`
+    - 错误信息：`Enter an integer is 100！`
+  - 如果传入的参数 **>99** 或者 **<-99**，报错
+    - 错误类型：`IllegalArgumentException`
+    - 错误信息：`Please enter an integer in the range!`
+```java
+public class MySUT {
 
+    //获得具有所需名称的记录器
+    static final Logger logger = getLogger(lookup().lookupClass());
+    //连续添加
+    public int sum(int... numbers) {
+        if(Arrays.stream(numbers).anyMatch(u -> u == 100) | Arrays.stream(numbers).anyMatch(u -> u == -100)){
+            //
+            logger.warn("Enter an integer is 100！");
+            throw new NumberFormatException("Enter an integer is 100！");
+        }else if (Arrays.stream(numbers).anyMatch(u -> u > 99) |
+                  Arrays.stream(numbers).anyMatch(u -> u < -99)){
+            // 请输入范围内的整数
+            logger.warn("Please enter an integer in the range!");
+            throw new IllegalArgumentException("Please enter an integer in the range!");
+        }else {
+            return IntStream.of(numbers).sum();
+        }
+    }
+}
+```
 
+#### 加法正向测试用例
+##### 步骤
+1. 被测系统计算器命名
+2. 日志打印开始测试
+3. 测试用例步骤调用
+4. 日志打印计算结果
 
-
-
-### junit 作为运行器
-
-- 对应的代码库，有10个方法，每次都要运行，如果你可以用一种方法来写一个主方法，然后用钩子来调用所有这些方法
-- `运行方法` --> `B()` --> `C()`
-
-- 可以直接在运行方法上写`Test`注解进行运行
-
-### 运行成功标志
-- `Green Check`
-![](https://gitee.com/datau001/picgo/raw/master/images/test/202112231510450.png)
-- no news is good news
-  - 没有消息就是好消息
-- no failures means success
-  - 没有失败就意味着成功
+##### 代码
+```java
+    @Test
+    public void sum() {
+        //1、被测系统命名为 - My Basic Test Project
+        MySUT mySUT = new MySUT("My Basic Test Project");
+        //2、打印日志 - Begin Sum Test
+        logger.info("Begin Sum Test");
+        //3、测试用例步骤调用 - sum()
+        int result = mySUT.sum(4, 1);
+        //4、打印结果日志 - Sum Result
+        logger.info("Sum Result：{}",result);
+    }
+```
+点击测试方法左侧运行按钮，只运行当前测试方法，输出结果如下：
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104145755.png)
 
 
 ## 总结
-- 总结一
-- 总结二
-- 总结三
-
+- `@Test`注解使用
+  * 1. `@Test`注解修饰的方法可直接运行「`@Test`注解 是方法上的」
+  * 2. 一个测试类里可以有多个`@Test`注解修饰的方法
+  * 3. `@Test`注解作用类似`Java`代码中的`main()`方法入口，但是还是有区别
+  * 4. `@Test`注解修饰的方法没有返回值，即方法声明时为`void`
+  * 5. `@Test`注解里面编写的内容是测试用例执行的具体内容及断言结果
+- 导包不要导错误
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5/junit5-basic/src/test/java/top/testeru/basic/An_01Test_Test.java)
 
