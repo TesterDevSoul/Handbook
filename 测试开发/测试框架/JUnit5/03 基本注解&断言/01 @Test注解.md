@@ -220,11 +220,11 @@ public class MySUT {
 >运行顺序为：sum1()、sum2()、sum3()、sum4()；与方法所在前后位置无关
 ## 总结
 - `@Test`注解使用
-  * 1. `@Test`注解修饰的方法可直接运行「`@Test`注解 是方法上的」
-  * 2. 一个测试类里可以有多个`@Test`注解修饰的方法
-  * 3. `@Test`注解作用类似`Java`代码中的`main()`方法入口，但是还是有区别
-  * 4. `@Test`注解修饰的方法没有返回值，即方法声明时为`void`
-  * 5. `@Test`注解里面编写的内容是测试用例执行的具体内容及断言结果
+  1. `@Test`注解修饰的方法可直接运行「`@Test`注解 是方法上的」
+  2. 一个测试类里可以有多个`@Test`注解修饰的方法
+  3. `@Test`注解作用类似`Java`代码中的`main()`方法入口，但是还是有区别
+  4. `@Test`注解修饰的方法没有返回值，即方法声明时为`void`
+  5. `@Test`注解里面编写的内容是测试用例执行的具体内容及断言结果
 - 导包不要导错误
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5/junit5-basic/src/test/java/top/testeru/basic/An_01Test_Test.java)
