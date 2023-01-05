@@ -377,10 +377,10 @@ org.junit.platform.commons.JUnitException: @AfterAll method 'public void top.tes
 
 ## 总结
 - `All`注解使用
-  * 1. `@BeforeAll`、`@AfterAll`注解修饰的方法不可直接运行
-  * 1. `@BeforeAll`、`@AfterAll`注解可同时修饰一个方法
-  * 1. `@BeforeAll`、`@AfterAll`注解修饰的方法**static修饰**并且**没有返回值**，即方法声明时为`static void`
-  * 1. `@BeforeAll`注解在类的所有方法之**前**运行；`@BeforeAll`注解注解在类的所有方法之**后**运行，**无论断言是否失败**；
+  1. `@BeforeAll`、`@AfterAll`注解修饰的方法不可直接运行
+  2. `@BeforeAll`、`@AfterAll`注解可同时修饰一个方法
+  3. `@BeforeAll`、`@AfterAll`注解修饰的方法**static修饰**并且**没有返回值**，即方法声明时为`static void`
+  4. `@BeforeAll`注解在类的所有方法之**前**运行；`@BeforeAll`注解注解在类的所有方法之**后**运行，**无论断言是否失败**；
 
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5/junit5-basic/src/test/java/top/testeru/basic/An_03All_Test.java)

@@ -312,10 +312,10 @@ public class An_02Each_Test {
 
 ## 总结
 - `Each`注解使用
-  * 1. `@BeforeEach`、`@AfterEach`注解修饰的方法不可直接运行
-  * 1. `@BeforeEach`、`@AfterEach`注解可同时修饰一个方法
-  * 1. `@BeforeEach`、`@AfterEach`注解修饰的方法没有返回值，即方法声明时为`void`
-  * 1. `@BeforeEach`注解在每个`@Test`之**前**都运行一次；`@AfterEach`注解在每个`@Test`之**后**都运行一次，**无论断言是否失败**；
+  1. `@BeforeEach`、`@AfterEach`注解修饰的方法不可直接运行
+  2. `@BeforeEach`、`@AfterEach`注解可同时修饰一个方法
+  3. `@BeforeEach`、`@AfterEach`注解修饰的方法没有返回值，即方法声明时为`void`
+  4. `@BeforeEach`注解在每个`@Test`之**前**都运行一次；`@AfterEach`注解在每个`@Test`之**后**都运行一次，**无论断言是否失败**；
 
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5/junit5-basic/src/test/java/top/testeru/basic/An_02Each_Test.java)
