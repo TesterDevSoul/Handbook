@@ -25,9 +25,11 @@
 
 如果满足以上条件，就可以进行对应的压测脚本的创建及运行。
 #### 1. 压测脚本创建
-安装`JMeter`，以GUI模式启动`JMeter`并构建测试计划。
+安装`JMeter`，以`GUI`模式启动`JMeter`并构建测试计划。
 
-打开{jmeter_path}/
+如果配置了全局环境变量则直接命令行输入`jmeter`启动`JMeter`的界面；
+
+如果没有配置全局变量则命令行`cd`到`{jmeter_path}/bin`路径下，再输入`jmeter`以启动`JMeter`的界面。
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106115317.png)
 
 
