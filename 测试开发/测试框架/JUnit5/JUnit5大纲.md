@@ -1,5 +1,4 @@
 # JUnit5 Tutorial
-
 <table>
     <tr>
         <th>模块</th>
@@ -33,12 +32,12 @@
         <td>包名、测试类及测试方法编写规范</td>
     </tr>
     <tr>
-        <td rowspan="7" style="text-align:center;font-weight:bold">基本注解</td>
+        <td rowspan="5" style="text-align:center;font-weight:bold">基本注解</td>
         <td><a href="https://www.testeru.top/archives/junit07">@Test注解</a></td>
         <td>创建测试用例</td>
     </tr>
     <tr>
-        <td><a href="https://www.testeru.top/archives/junit08">测试用例断言</a></td>
+        <td><a href="https://www.testeru.top/archives/junit08">基本断言</a></td>
         <td>AssertEquals</td>
     </tr>
     <tr>
@@ -50,9 +49,21 @@
         <td>所有方法前、后运行：<br>@BeforeAll、@AfterAll</td>
     </tr>
     </tr>
-        <tr>
-        <td><a href="https://www.testeru.top/archives/junit11">运行顺序</a></td>
+    <tr>
+        <td><a href="https://www.testeru.top/archives/junit11">基本注解运行顺序</a></td>
         <td>注解在同一个类中运行顺序；<br>类之间继承，注解的运行顺序</td>
     </tr>
-    
+    <tr>
+        <td rowspan="3" style="text-align:center;font-weight:bold">项目运行</td>
+        <td><a href="https://www.testeru.top/archives/junit12">界面化运行</a></td>
+        <td>开发者工具运行测试方法&测试类</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.testeru.top/archives/junit13">命令行运行</a></td>
+        <td>maven命令行运行测试方法&测试类</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.testeru.top/archives/junit14">配置文件运行</a></td>
+        <td>pom文件配置运行测试方法&测试类</td>
+    </tr>
 </table>

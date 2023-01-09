@@ -11,7 +11,7 @@
 
 1. 检查Java环境
    >Java版本建议**11**或以上版本 
-    ```shell
+    ```bash
     java -version
     javac
     ```
@@ -62,11 +62,11 @@
 ### Standalone 运行
 #### 1. 命令行Standalone启动
 1. 命令行`cd`到`selenium-server.jar`包下
-    ```shell
+    ```bash
     cd Desktop 
     ```
 2. `java -jar`声明角色为`standalone`启动`jar`包：`java -jar selenium-server-<version>.jar standalone`
-    ```shell
+    ```bash
     java -jar selenium-server-4.4.0.jar standalone
     ```
     >启动成功后，对应命令行显示`Started Selenium Standalone`，如下图：
@@ -90,13 +90,13 @@
 
 #### 1. 命令行Hub启动
 1. 命令行`cd`到`selenium-server.jar`包下
-    ```shell
+    ```bash
     cd Desktop 
     ```
 2. `java -jar`声明角色为`hub`启动`jar`包：`java -jar selenium-server-<version>.jar hub`
 
 
-    ```shell
+    ```bash
     java -jar selenium-server-4.4.0.jar hub
     ```
     >启动`jar`包文件并把它作为集线器`hub`的角色启动。<br>启动成功后，对应命令行显示`Started Selenium Hub`，如下图：
@@ -118,12 +118,12 @@
 ##### 2.1 同一机器上启动node
 
 1. 命令行`cd`到`selenium-server.jar`包下
-    ```shell
+    ```bash
     cd Desktop 
     ```
 2. `java -jar`声明角色为`node`启动`jar`包并校验浏览器`driver`是否存在：`java -jar selenium-server-<version>.jar node --detect-drivers true`
 
-    ```shell
+    ```bash
     java -jar selenium-server-4.4.0.jar node --detect-drivers true
     ```
     >启动`jar`包文件并把它作为`node`的角色启动。<br>启动成功后，对应命令行显示`Started Selenium node`，如下图：
@@ -162,7 +162,7 @@
 
 不同机器上启动node：`java -jar selenium-server-<version>.jar node --detect-drivers true --publish-events tcp://<ip> --subscribe-events tcp://<ip>`
 
-```shell
+```bash
 java -jar selenium-server-4.4.0.jar node --detect-drivers true --publish-events tcp://10.1.1.178:4442 --subscribe-events tcp://10.1.1.178:4443
 ```
 >不同机器上启动的时候需要安装相同版本的jar及根据机器上的浏览器下载对应的driver
@@ -196,7 +196,7 @@ java -jar selenium-server-4.4.0.jar node --detect-drivers true --publish-events 
 - 事件总线：启用不同Grid组件之间的内部通信。
 - 默认端口为：4442、4443和5557。
 - `java -jar selenium-server-<version>.jar event-bus`
-```shell
+```bash
 java -jar selenium-server-4.4.0.jar event-bus
 ```
 
@@ -207,7 +207,7 @@ java -jar selenium-server-4.4.0.jar event-bus
 - 默认端口是5559
 - `java -jar selenium-server-<version>.jar sessionqueue`
 
-```shell
+```bash
 java -jar selenium-server-4.4.0.jar sessionqueue
 ```
 
@@ -240,7 +240,7 @@ java -jar selenium-server-4.4.0.jar distributor --sessions http://10.1.1.178:555
 
 
 
-```shell
+```bash
 java -jar selenium-server-4.4.0.jar router --sessions http://10.1.1.178:5556 --distributor http://10.1.1.178:5553 --sessionqueue http://10.1.1.178:5559
 ```
 
@@ -256,6 +256,6 @@ java -jar selenium-server-4.4.0.jar router --sessions http://10.1.1.178:5556 --d
 
 
 
-```shell
+```bash
 java -jar selenium-server-4.4.0.jar node --detect-drivers true --publish-events tcp://10.1.1.178:4442 --subscribe-events tcp://10.1.1.178:4443
 ```

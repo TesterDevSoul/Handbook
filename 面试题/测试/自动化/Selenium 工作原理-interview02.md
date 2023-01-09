@@ -104,7 +104,7 @@ driver.get("https://www.ceshiren.com") # 访问 测试人论坛
 
 结果：
 
-```shell
+```bash
 
 1. DeprecationWarning: executable_path has been deprecated, please pass in a Service object
 

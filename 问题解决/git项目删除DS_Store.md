@@ -1,4 +1,4 @@
-```shell
+```bash
 touch ~/.gitignore_global 
 
 vi ~/.gitignore_global
