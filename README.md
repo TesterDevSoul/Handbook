@@ -8,7 +8,6 @@ Manual
 │  └─ settings.json
 ├─ 01测试开发全栈.png
 ├─ Front-end
-│  ├─ .DS_Store
 │  ├─ 01.HTML.md
 │  ├─ 02.CSS.md
 │  ├─ 03.JavaScript.md
@@ -23,12 +22,12 @@ Manual
 │  │  └─ 5 超链接标签.html
 │  └─ 前端.xmind
 ├─ Git
-│  └─ 01 常用命令.md
+│  ├─ 01 常用命令.md
+│  └─ 02 删除.DS_Store.md
 ├─ Maven.xmind
 ├─ MyBatis
 ├─ README.md
 ├─ Spring
-│  ├─ .DS_Store
 │  ├─ 01.IOC控制反转
 │  │  └─ 01 Spring入门.md
 │  └─ AOP
@@ -50,14 +49,10 @@ Manual
 ├─ 测试开发
 │  ├─ .DS_Store
 │  ├─ UI自动化
-│  │  ├─ .DS_Store
 │  │  ├─ App自动化
 │  │  └─ Web自动化
-│  │     ├─ .DS_Store
 │  │     ├─ Selenium
-│  │     │  ├─ .DS_Store
 │  │     │  └─ SeleniumGrid
-│  │     │     ├─ .DS_Store
 │  │     │     ├─ 1 SeleniumGrid初始.md
 │  │     │     ├─ 2 SeleniumGrid运行.md
 │  │     │     ├─ 3 SeleniumGrid组成.md
@@ -67,9 +62,7 @@ Manual
 │  │     └─ 前端测试.xmind
 │  ├─ 专项测试
 │  ├─ 实战
-│  │  ├─ .DS_Store
 │  │  └─ 企业微信
-│  │     ├─ .DS_Store
 │  │     ├─ 01.JUnit5.md
 │  │     ├─ 01.部门接口.md
 │  │     ├─ 02.JUnit5.md
@@ -93,14 +86,36 @@ Manual
 │  │     ├─ 20.restassured总结.md
 │  │     ├─ README.md
 │  │     └─ 企业微信.xmind
+│  ├─ 平台
+│  │  └─ 平台大纲.md
 │  ├─ 性能
 │  │  ├─ .DS_Store
-│  │  ├─ JMeter
-│  │  └─ 静默压测.md
-│  ├─ 接口自动化
-│  │  ├─ .DS_Store
-│  │  ├─ REST-assured
+│  │  ├─ 1.性能入门
+│  │  │  └─ 1)性能介绍
+│  │  │     └─ JMeter安装.md
+│  │  ├─ 2.JMeter入门
 │  │  │  ├─ .DS_Store
+│  │  │  ├─ 1)JMeter安装
+│  │  │  │  ├─ JMeter安装及配置-Linux.md
+│  │  │  │  ├─ JMeter安装及配置-Mac.md
+│  │  │  │  └─ JMeter安装及配置-Window.md
+│  │  │  ├─ 2)JMeter脚本创建
+│  │  │  │  ├─ .DS_Store
+│  │  │  │  ├─ 1.JMeter创建压测脚本及运行.md
+│  │  │  │  └─ 2.JMeter压测脚本添加响应断言.md
+│  │  │  └─ 3)JMeter基本组件
+│  │  │     ├─ 1.线程（用户）组件-线程组详解.md
+│  │  │     ├─ 2.采样器组件-HTTP请求组件详解.md
+│  │  │     └─ 3.监听器组件-查看结果树组件详解.md
+│  │  ├─ per.html
+│  │  ├─ 性能之巅2
+│  │  ├─ 性能大纲.md
+│  │  └─ 静默压测
+│  │     ├─ 静默压测-vscode-reveal.ppt.md
+│  │     ├─ 静默压测生成HTML报告.md
+│  │     └─ 静默压测生成Web报告.xmind
+│  ├─ 接口自动化
+│  │  ├─ REST-assured
 │  │  │  ├─ 00.教学大纲.md
 │  │  │  ├─ 01.Client&Server Basics
 │  │  │  ├─ 02.RESTful Basics
@@ -113,27 +128,26 @@ Manual
 │  │  │  └─ 04.REST-assured Advance
 │  │  └─ 接口测试.xmind
 │  └─ 测试框架
-│     ├─ .DS_Store
 │     ├─ 0 xUnit测试体系.md
 │     └─ JUnit5
-│        ├─ .DS_Store
 │        ├─ 01 JUnit5入门
-│        │  ├─ 01 JUnit5组成.md
+│        │  ├─ 01 JUnit5介绍.md
 │        │  └─ 02 框架对比.md
 │        ├─ 02 项目创建&运行
-│        │  ├─ .DS_Store
 │        │  ├─ 01 开发工具介绍.md
 │        │  ├─ 02 测试用例编写.md
 │        │  └─ 03 项目运行.md
 │        ├─ 03 基本注解&断言
 │        │  ├─ 01 @Test注解.md
-│        │  ├─ 02 测试用例断言.md
-│        │  ├─ 03 @BeforeEach注解.md
-│        │  ├─ 04 @AfterEach注解.md
-│        │  ├─ 05 @BeforeAll注解.md
-│        │  ├─ 06 @AfterAll注解.md
-│        │  └─ 07 运行顺序.md
-│        ├─ 04 常用注解
+│        │  ├─ 02 测试用例基本断言.md
+│        │  ├─ 03 Each注解.md
+│        │  ├─ 04 All注解.md
+│        │  └─ 05 基本注解顺序及用例策略.md
+│        ├─ 04 测试用例的调度执行
+│        │  ├─ 01 界面化执行.md
+│        │  ├─ 02 命令行执行.md
+│        │  └─ 03 配置文件执行.md
+│        ├─ 05 常用注解
 │        │  ├─ 05 常用注解「上」.md
 │        │  └─ 06 常用注解「下」.md
 │        ├─ 05 配置文件
@@ -144,13 +158,15 @@ Manual
 │        │  ├─ 01 的副本10.md
 │        │  ├─ 01 的副本9.md
 │        │  └─ 09 断言进阶.md
-│        └─ JUnit5大纲.md
+│        ├─ JUnit5 Tutorial.html
+│        ├─ JUnit5.xmind
+│        ├─ JUnit5大纲.md
+│        ├─ L1.md
+│        └─ L2.md
 ├─ 测试开发.xmind
 ├─ 测试开发全栈.xmind
 ├─ 编程语言
-│  ├─ .DS_Store
 │  └─ JavaSE
-│     ├─ .DS_Store
 │     ├─ json
 │     │  ├─ 01 JSON入门.md
 │     │  └─ 02  FastJson.md
@@ -158,9 +174,7 @@ Manual
 ├─ 问题解决
 │  └─ git项目删除DS_Store.md
 └─ 面试题
-   ├─ .DS_Store
    ├─ 开发
-   │  ├─ .DS_Store
    │  └─ JAVA
    │     ├─ 01.Java 是解释执行，这句话正确吗？.md
    │     ├─ 02.int、Integer 区别.md
@@ -168,7 +182,6 @@ Manual
    │     ├─ 04.HashMap、HashTable 区别.md
    │     └─ 05.SpringBoot 框架的优缺点.md
    ├─ 测试
-   │  ├─ .DS_Store
    │  ├─ adb
    │  │  └─ 01.adb常用命令.md
    │  ├─ 一个缺陷的生命周期是怎么样的？.md
