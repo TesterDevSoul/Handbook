@@ -1,69 +1,89 @@
 # JMeter安装及配置-Mac
 ## 本章要点
-1. 要点一
-1. 要点
-1. 要点
-1. 要点
+1. 前置条件
+1. 命令行安装
+1. 压缩包安装
 
 ## 正文
 
 在`Mac`上安装对应的`JMeter`工具有两种方式：一种直接借助**终端命令行**`brew`进行安装；另外一种和`Window`电脑一样去`JMeter`官网下载**压缩包安装**。
 
-
-
+无论是哪种安装方式，都需要有对应环境的前置条件，下面先来看一下对应的前置条件：
 ### 前置条件
 
-1. `Java`环境安装配置成功。Java 8+，建议jdk11。
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106140728.png)
+1. 在安装`JMeter`之前，要把`Java`的环境安装配置成功。由于`JMeter`使用的是`Java`语言进行开发的一个应用，所以运行`JMeter`的前提当前机器有`Java`环境。`Java`的版本必须是`Java 8+`，我这里使用的是`jdk11`。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106140728.png)
+### 1. 命令行brew安装
+使用命令行`brew`进行安装的前提是：`Mac`电脑上已经安装了`brew`命令行工具。
 
-1. `Apache JMeter`下载安装成功。
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106140822.png)
+可以在命令行输入以下命令进行验证：
+```bash
+brew --version
+```
+对应的运行结果为：
+```
+Homebrew 3.6.13
+Homebrew/homebrew-core (git revision 2787e0a5d5d; last commit 2022-12-04)
+Homebrew/homebrew-cask (git revision 7bd3fc7aa8; last commit 2023-01-11)
+```
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116111248.png)
 
 
+终端显示对应`brew`的版本号后，即可在命令行终端运行安装命令：
 ```bash
 bew install jmeter
 ```
-默认安装的路径为`/usr/local/Cellar/jmeter/5.5`。
+#### 安装路径查看
 
-如果满足以上条件，就可以进行对应的压测脚本的创建及运行。
-### 1. 压测脚本创建
-安装`JMeter`，以`GUI`模式启动`JMeter`并构建测试计划。
+命令行安装的默认安装的路径为`/usr/local/Cellar/jmeter/版本号`。本次安装的是5.5的版本，所以安装路径为：`/usr/local/Cellar/jmeter/5.5`。下面来进行路径的查看及验证。
 
-如果配置了全局环境变量则直接命令行输入`jmeter`启动`JMeter`的界面；
+如何进行安装路径的查看？
+1. 通过`which`进行`JMeter`目录的显示。
+1. 打开目录的上一层文件，右键选择显示原项目。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116135447.png)
+1. 跳转到`JMeter`真正运行的代码路径下。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116140257.png)
 
-如果没有配置全局变量则命令行`cd`到`{jmeter_path}/bin`路径下，再输入`jmeter`以启动`JMeter`的界面。
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106115317.png)
+命令行安装的`JMeter`**无需配置环境变量**，在命令行输入`jmeter`即可打开`GUI`界面。
 
-
-##### 报错
-配置完环境变量后，对应的命令行打开还是不能启动脚本，命令行提示：
-
+#### 命令行卸载
+只能卸载`brew`命令行安装的`JMeter`。如果需要卸载，则直接在命令行输入以下命令：
 ```bash
-jmeter: Permission denied【拒绝访问】
+brew uninstall jmeter
 ```
 
-**解决方案**：给`jmeter`启动脚本增加权限。
-```bash
-chmod +x jmeter
+### 2. 压缩包安装
+1. 如果是要压缩包进行解压安装，则需要去[官网](https://jmeter.apache.org/download_jmeter.cgi)下载对应版本的`Apache JMeter`压缩包，并解压到当前电脑上指定路径即可。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116105918.png)
 
-# 移除对应的执行权限
-chmod -x jmeter
+   >本文中，直接解压到用户目录下，如下所示：
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106140822.png)
+
+此时，虽然安装成功，但是需要对`JMeter`进行环境变量的配置，否则，无法直接使用命令行启动`JMeter`的界面化。
+
+#### 配置环境变量
+```bash
+#-------- jmeter ----------
+JMETER_HOME=/**/apache-jmeter-5.5
+
+export JMETER_HOME
+export PATH=$PATH:$JMETER_HOME/bin
+```
+- `JMETER_HOME`：为`JMeter`解压路径。
+
+>配置完环境变量后，在终端需要`source`保存后再重新打开命令行窗口才可生效。
+
+### 界面化启动
+JMeter无论是通过命令行安装还是通过压缩包解压安装，最后都需要通过界面化启动来验证。
+
+```bash
+jmeter
 ```
 
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116143106.png)
 
->启动JMeter的界面化，其实就是启动的`{jmeter_path}/bin`下的`jmeter`脚本，Mac/Linux系统下是jmeter，Window系统下是jmeter.bat；<br>看一下脚本的内容：
-
-- `#! /bin/sh`：说明是一个shell脚本。
-- `JAVA_HOME`：电脑的环境变量需要配置该变量。
-- `MINIMAL_VERSION=8`：启动JMeter的最低Java版本是8。
-- `JAVA9_OPTS=`：JMeter也可以使用Java9,但是使用9的时候对应启动命令参数就有变化。
-- `: "${HEAP:="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m"}"`：JMeter使用的Java环境的基本堆大小。可以修改。
-- `: "${JMETER_LANGUAGE:="-Duser.language=en -Duser.region=EN"}"`：默认的语言是英语，可以修改为中文。
+界面化可以启动成功，则说明对应Mac电脑安装`JMeter`成功。
 
 ## 总结
-- 总结一
-- 总结二
-- 总结三
-
-
-[项目演示地址](https://github.com/testeru-pro/junit5-demo/tree/main/junit5-basic)
+- 压缩包安装需要配置环境变量，才可使用命令行启动。
+- 命令行安装`JMeter`可直接终端输入命令启动。
