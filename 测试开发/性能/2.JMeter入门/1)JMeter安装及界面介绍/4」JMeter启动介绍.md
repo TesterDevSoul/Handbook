@@ -85,9 +85,6 @@ For load testing, use CLI Mode (was NON GUI):
 
 
 ## 总结
-- 总结一
-- 总结二
-- 总结三
-
-
-[项目演示地址](https://github.com/testeru-pro/junit5-demo/tree/main/junit5-basic)
+- JMeter启动日志
+  - Java8正常启动，Java11有告警可忽略。
+- JMeter界面分为四部分：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
