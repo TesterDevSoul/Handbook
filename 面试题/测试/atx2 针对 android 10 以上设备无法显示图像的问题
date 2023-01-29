@@ -1,0 +1,12 @@
+atx2 针对 android 10 以上设备无法显示图像的问题有解决吗
+
+android11 获取不到屏幕流，原因是 stf 官方未维护 Android 28 以上版本的 minicap.so
+
+解决：
+
+手动下载对应版本的 minicap.so
+https://github.com/varundtsfi/Android12Support_withso/tree/main/aosp
+
+推送到手机
+
+adb -s 设备id push 下载路径 /data/local/tmp/

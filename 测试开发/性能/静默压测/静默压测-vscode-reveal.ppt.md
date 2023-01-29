@@ -1,8 +1,12 @@
 ---
-theme: league
-use: 
+theme: "league"
+transition: "fade"
+highlightTheme: "monokai"
+slideNumber: false
 title: "静默压测生成HTML报告"
+use: hogwarts
 ---
+
 
 # 静默压测生成HTML报告
 
@@ -632,11 +636,11 @@ jmeter -g [results file] -e -o [Path to web report folder]
 
 ---
 
-### 1. 添加用户自定义变量
+## 1. 添加用户自定义变量
 
-线程组(`Thread Group`) -> 添加(`Add`) -> 配置元件(`Config Element`) -> 用户定义的变量(`User Defined Variables`)
+线程组 -> 添加 -> 配置元件 -> 用户定义的变量
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual//20230110150040.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual//20230110150040.png){:height="50%" width="50%"}
 
 
 
@@ -880,7 +884,7 @@ jmeter.reportgenerator.report_title=Apache JMeter Dashboard
   jmeter.reportgenerator.report_title=ceshiren.com
   ```
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual//20230111154038.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230111154038.png)
 
 
 ---
