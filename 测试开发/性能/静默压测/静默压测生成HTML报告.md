@@ -551,7 +551,7 @@ jmx脚本按结构自上而下：
 
 无论是**命令行**进行参数值传递还是**脚本**进行参数值传递，它们的前置条件是都需要在`GUI`界面设置传入参数的变量声明。
 
-### 自定义变量
+### 自定义变量声明
 
 #### 1. 添加用户自定义变量
 
@@ -589,7 +589,8 @@ jmx脚本按结构自上而下：
 
 线程组的线程属性引用上面自定义的变量。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110152005.png)
+![](https://cdn.jsdelivr.net/gh/Tester
+DevSoul/pic/manual/20230110152005.png)
 
 
 #### 4. 验证
@@ -604,8 +605,8 @@ jmx脚本按结构自上而下：
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110161950.png)
 
 
+### 方式一：命令行传参数变量
 
-### 命令行传参
 执行命令：
 ```bash
 jmeter -n -t [jmx file] -l [results file] -JthreadNum=整数 -JloopNum=整数 -JrampNum=整数
@@ -635,9 +636,9 @@ Define additional JMeter properties
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110170348.png)
 
-### 脚本
-命令行虽然可以直接更改线程数，但是其实压测时我们每次会是不同的并发数，所以一个压测脚本可能需要在命令行输入多次命令才能完成。
+### 方式二：脚本
 
+命令行虽然可以直接更改线程数，但是其实压测时我们每次会是不同的并发数，所以一个压测脚本可能需要在命令行输入多次命令才能完成。
 
  
 #### 并发数规则
@@ -646,21 +647,28 @@ Define additional JMeter properties
 >10 50 100 120 140 150 160 170 175
 
 具体的并发数值根据被测服务不同而不同
+
 #### 脚本业务流程图
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110142435.png)
 
 
 #### 并发数组
+
 1. 在脚本中设置模版压测脚本的地址
 2. 获取当前运行的系统环境并赋值给变量os_type
 3. 设置压测并发数
    >thread_num_array = (10 50 100 120 140)
+
 #### 脚本
+
 1. 判断对应模版压测脚本`PATH`是否存在
 2. 读取模版压测脚本写入新生成文件
 3. 对应字段替换使用$thread
 4. 文件名唯一性：使用`sample_并发数`。比如：GETAPI_10.jmx
+
+
+
 
 ### DIY 定制化 JMeter 聚合压测报告
 
