@@ -546,7 +546,7 @@ jmx脚本按结构自上而下：
 >因此，可以`GUI`界面进行参数化一些常用的变量，直接在`JMeter`命令行对该变量参数值进行设置。
 
 
-方式二：编写**脚本**进行参数值传递。{`shell`/`python`}
+方式二：编写**脚本**进行参数值传递。{`shell`+`python`}
 
 
 无论是**命令行**进行参数值传递还是**脚本**进行参数值传递，它们的前置条件是都需要在`GUI`界面设置传入参数的变量声明。
@@ -579,29 +579,37 @@ jmx脚本按结构自上而下：
 
 ##### 2） 函数添加
 
-添加三个函数，对应分别对应线程组的线程属性。
+添加线程属性相关的三个函数，分别对应线程组的线程属性。
 
->`${__P(thread,1)}`，表示变量`thread`的默认值为**1**
+添加服务器名函数，对应在HTTP请求组件的服务器名称。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110151837.png)
+>`${__P(thread,1)}`，表示变量`thread`的默认值为 **1**<br>
+>`${__P(ramp,1)}`，表示变量`ramp`的默认值为 **1**<br>
+>`${__P(loop,1)}`，表示变量`loop`的默认值为 **1**<br>
+>`${__P(domain,reqres.in)}`，表示变量`domain`的默认值为 **reqres.in**<br>
 
-#### 3. 线程组引用
 
-线程组的线程属性引用上面自定义的变量。
 
-![](https://cdn.jsdelivr.net/gh/Tester
-DevSoul/pic/manual/20230110152005.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230201180235.png)
+#### 3. 引用
 
+线程组的 线程属性 引用自定义的变量。
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110152005.png)
+
+HTTP请求组件的 服务器名或IP 引用自定义的变量url。
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230201180751.png)
 
 #### 4. 验证
 
-添加聚合报告验证对应的样本请求数，导航到 线程组(`Thread Group`) -> 添加(`Add`) -> 监听器(`Listener`) -> 聚合报告(`Aggregate Report`)
+添加**聚合报告**验证对应的样本请求数，导航到 线程组(`Thread Group`) -> 添加(`Add`) -> 监听器(`Listener`) -> 聚合报告(`Aggregate Report`)
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110160301.png)
 
 `jmx`文件保存，界面化运行，验证变量是否设置成功。
 
->样本请求的线程数都为**1**，说明设置成功。因为在用户自定义变量中，**变量**的默认值都为**1**。
+>样本请求的线程数都为**1**，说明设置成功。因为在用户自定义变量中，**变量**的默认值都为**1**。<br>结果文件`jtl`中请求的`url`是默认地址。
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110161950.png)
 
 
@@ -609,7 +617,7 @@ DevSoul/pic/manual/20230110152005.png)
 
 执行命令：
 ```bash
-jmeter -n -t [jmx file] -l [results file] -JthreadNum=整数 -JloopNum=整数 -JrampNum=整数
+jmeter -n -t [jmx file] -l [results file] -JthreadNum=整数 -JloopNum=整数 -JrampNum=整数 -Jurl=服务器域名
 ```
 
 - `-J`：`jmeterproperty`;定义额外的 `JMeter` 属性
@@ -622,7 +630,11 @@ Define additional JMeter properties
 
 
 ```bash
-/Users/gigai/apache-jmeter-5.5/bin/jmeter -n -t GETAPI.jmx -l get.jtl -Jthread=2 -Jloop=2 -Jramp=1
+# 使用默认域名请求
+jmeter -n -t GETAPI.jmx -l get.jtl -Jthread=2 -Jloop=2 -Jramp=1
+
+# 更换测试环境的域名请求
+jmeter -n -t GETAPI.jmx -l get.jtl -Jthread=2 -Jloop=2 -Jramp=1 -Jurl=ceshiren.com
 ```
 2个线程循环2次，运行完成后对应命令行终端显示：
 
@@ -630,9 +642,9 @@ Define additional JMeter properties
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110170321.png)
 
 
-如果命令行查看不是很明白直观，可以把结果文件导入到GUI界面的聚合报告中进行查看。
+如果命令行查看不是很明白直观，可以把结果文件导入到`GUI`界面的聚合报告中进行查看。
 
-在聚合报告中导入结果文件jtl时要注意，首先清空一下结果，不然对应的聚合报告界面样本数是在以前的界面上进行叠加不是直接显示导入的结果文件的样本数。
+在聚合报告中导入结果文件`jtl`时要注意，首先清空一下结果，不然对应的聚合报告界面样本数是在以前的界面上进行叠加不是直接显示导入的结果文件的样本数。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230110170348.png)
 
@@ -655,18 +667,16 @@ Define additional JMeter properties
 
 #### 并发数组
 
-1. 在脚本中设置模版压测脚本的地址
-2. 获取当前运行的系统环境并赋值给变量os_type
-3. 设置压测并发数
+shell脚本设置压测并发数
    >thread_num_array = (10 50 100 120 140)
 
 #### 脚本
 
 1. 判断对应模版压测脚本`PATH`是否存在
 2. 读取模版压测脚本写入新生成文件
-3. 对应字段替换使用$thread
-4. 文件名唯一性：使用`sample_并发数`。比如：GETAPI_10.jmx
-
+   1. 文件名唯一性：{}_tn{}_rt{}_lc{}_h{}
+3. 对应字段替换
+4. JMeter命令行运行
 
 
 
@@ -787,13 +797,47 @@ HTTP中4xx和5xx开头的响应状态码一般是被认为请求不成功的，�
 以上就是，断言中判断请求失败的响应代码问题
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230131165028.png)
 
+**解决**：
+
+忽略状态，强制性让JMeter认为当前请求是成功的。
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230202104851.png)
+
 ## 面试题
 ### 性能测试在什么环境开展？
+
 性能测试不能与功能测试在同一个测试环境，需要搭建完全的一套独立的环境，这时就需要运维帮忙搭建环境，研发去同步部署环境。
-对应的
 
 
 搭建一套独立的性能测试环境进行测试，硬件设施尽量和线上环境保持一致
+
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230201194759.png)
+
+### 性能测试发现的问题，是开发解决，还是你解决？
+
+产研测拉会聊天，确认需求确认场景确认指标后形成文档申请资源搭建环境编写脚本，执行测试然后盯着系统参数接口参数，有问题能解决解决不行找研发。最后输出报告附上结果分析
+
+
+
+- 与研发、产品确认需求及指标
+- 申请性能资源搭建环境
+- 测试编写脚本
+- 执行性能测试分析性能参数
+- 若涉及调优，需要与开发、DB、运维一起分析
+
+
+7.与开发，架构，DB 一起去看测试过程，调优
+
+测试：
+
+性能方案、测试脚本编写
+
+性能脚本执行
+
+调优需要协同
+
+性能报告的输出
 
 ### 怎样分析性能测试结果
 
