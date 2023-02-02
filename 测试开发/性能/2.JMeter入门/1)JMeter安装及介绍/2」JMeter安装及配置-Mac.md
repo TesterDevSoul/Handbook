@@ -44,7 +44,7 @@ Homebrew/homebrew-cask (git revision 7bd3fc7aa8; last commit 2023-01-11)
 终端显示对应`brew`的版本号后，即可在命令行终端运行`brew`的安装命令：
 
 ```bash
-bew install jmeter
+brew install jmeter
 ```
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230130150002.png)
