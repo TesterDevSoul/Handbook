@@ -54,8 +54,8 @@ For load testing, use CLI Mode (was NON GUI):
    Modify current env variable HEAP="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m" in the jmeter batch file
 ```
 
-## JMeter界面介绍
-`JMeter`的主界面主要分为**4**部分，如下：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
+## JMeter工作区介绍
+`JMeter`的主界面工作区主要分为**4**部分，如下：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116150926.png)
 

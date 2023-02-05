@@ -30,7 +30,7 @@
 
 下面来看下怎样使用`JMeter`的代理服务器来录制压测脚本。
 
-#### 1. 命令行打开JMeter的GUI界面
+#### 1. 打开JMeter的GUI界面
 
 默认创建测试计划，在界面上方对应当前`JMeter`版本号。
 
@@ -61,7 +61,7 @@
 
 `HTTP(S)` 测试脚本记录器允许 `JMeter` 在浏览器浏览 `Web` 应用程序时拦截并记录操作。
 
-#### 4. 添加录制的请求路径组件
+#### 4. 录制的请求路径组件
 
 虽然添加了`HTTP(S)` 测试脚本记录器，但是记录下的来的`HTTP`请求还没有存放路径。下面来添加录制的请求存放路径组件。
 
@@ -121,7 +121,9 @@ netstat -an|findstr "端口号"
 
 ##### 脚本编码格式设置
 
-录制的页面是中文页面，中文应用一般使用的是`UTF-8`的编码格式。录制脚本时也需要声明编码格式与客户端的编码格式保持一致，否则会出现乱码问题。
+录制的页面是中文页面，中文应用一般使用的是`UTF-8`的编码格式。
+
+录制脚本时也需要声明编码格式与客户端的编码格式保持一致，否则会出现**乱码**问题。「解决脚本乱码问题」
 
 `Recording's default encoding`：`JMeter`录制时的默认编码，中文应用设置为**utf-8**。
 
@@ -152,9 +154,14 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173054.png)
 
+
 ##### 证书验证
 
 打开`{jmeter_path}/bin`路径下查看生成的证书是否存在。
+
+注意⚠️：
+1. 如果在7天内生成过证书，则对应不会生成新的证书。
+2. 如果已存在7天之前的证书，需要删除后重新生成。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173327.png)
 
@@ -178,15 +185,70 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203180449.png)
 
-修改完成后，直接关闭输入密码即可。
+修改完成后，直接关闭输入密码，此时的证书被完全信任。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203180628.png)
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203181717.png)
 
-#### 7. 执行
+#### 8. 浏览器代理配置
+##### Chrome浏览器代理配置
+使用第三方插件`SwitchyOmega`来进行代理配置。
+1. 新建名为`jmeter`的代理模式，类型为默认的代理服务器选项。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205110359.png)
 
-#### 
+2. 代理配置。
+    - 请求为`HTTP`协议的代理，所以配置代理服务器的代理协议为`HTTP`。
+    - `JMeter`代理服务器启动的地址是本地，所以配置代理服务器的`IP`时为**127.0.0.1**。
+    - `JMeter`代理服务器修改的监听端口号为**6666**，这里配置的代理端口与`JMeter`的保持一致为**6666**。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205110722.png)
+
+    >最后点击应用选项保存以上配置。
+3. 应用代理。
+    >在浏览器的扩展程序中选中`jmeter`模式，此时浏览器的所有请求都会通过该端口进行转发给`JMeter`的代理服务器。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205112654.png)
+
+##### FixFox浏览器代理配置
+
+
+#### 9. 执行
+
+1. 执行业务逻辑。
+
+2. 关闭`JMeter`代理服务器。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205112932.png)
+
+3. 关闭浏览器代理配置。
+   
+4. JMeter脚本验证。[录制](录制.jmx)
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205113356.png)
+
+### 优化
+
+虽然业务逻辑步骤只是点了两个页面，但是录制出来的请求有很多个。
+
+下面我们对这些请求进行一个分析，发现录制的脚本中有很多`js`或者`jpg`或者`css`等等结尾的请求，这些请求统称为静态资源。公司里面的**静态资源**是不会和请求的服务端共同放在一个服务器上。
+
+#### 静态资源优化
+##### 概念
+
+静态资源就是服务端发送到客户端的文件，比如：`js`、`css`、图片、音频等等。
+
+静态资源是不会占用服务器的运算资源，所以在压测时不会关注静态资源相关的请求。
+
+##### 存放位置
+
+静态资源的存放位置，需要问一下前端研发，这块资源的统筹归属为前端研发。
+
+静态资源会存放在`CDN`服务器上，`CDN`服务包含：**公司自建的CDN服务**、**又拍云**、**阿里云**、**七牛云**等等。
+              
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205135626.png)
+
+##### 过滤
+请求过滤
+
+
+
 ## 总结
 - 总结一
 - 总结二
