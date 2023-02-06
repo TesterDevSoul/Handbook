@@ -191,7 +191,15 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173327.png)
 
+
+##### CA证书作用
+`CA`「`Certificate Authority`」：**证书授权中心**，负责管理和签发证书的第三方机构。
+一般，`CA`证书必须是所有行业和所有公众都信任的、认可的，因此它具有足够的权威性。`CA`证书就是权威机构颁发的证书。
+
+在本文中，生成的`CA`证书就是客户端与`JMeter`之间的相互认可的一个信用凭证。
+
 #### 7. 证书配置
+
 
 ##### Mac系统
 
