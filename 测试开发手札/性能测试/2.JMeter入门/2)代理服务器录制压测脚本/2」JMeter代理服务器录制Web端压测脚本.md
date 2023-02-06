@@ -177,6 +177,9 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173054.png)
 
+代理服务器启动成功时界面如下：
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206115736.png)
 
 ##### 证书验证
 
