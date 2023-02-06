@@ -120,16 +120,46 @@ brew uninstall jmeter
 ### 配置环境变量
 此时，虽然安装成功，但是需要对`JMeter`进行环境变量的配置，否则，无法直接使用命令行启动`JMeter`的界面化。
 
+##### 1. 查看本地配置文件
+查看对应`shell`使用方式，如果是`zsh`则配置文件为`.zshrc`；如果是`bash`则配置文件为`.bash_profile`。
+```bash
+echo $SHELL
+```
+##### 2. 打开本地配置文件
+打开本地的配置文件，进行`JMeter`环境变量的配置。
+```bash
+open .zshrc 
+```
+##### 3. 配置文件输入环境变量
+输入环境变量，保存后退出。其中`JMETER_HOME`为`JMeter`解压路径。
+
 ```bash
 #-------- jmeter ----------
+# JMETER_HOME：JMeter解压路径
 JMETER_HOME=/**/apache-jmeter-5.5
 
 export JMETER_HOME
 export PATH=$PATH:$JMETER_HOME/bin
 ```
-- `JMETER_HOME`：为`JMeter`解压路径。
+##### 4. 配置文件生效
+命令行执行`source`使刚刚配置好的环境变量生效。
+```bash
+source .zshrc
+```
+##### 5. 验证
+重新打开一个新的命令行窗口，输入`jmeter -v`进行JMeter的版本验证。
+```bash
+jmeter -v
+```
+若环境变量没有配置成功，命令行显示如下：
 
->配置完环境变量后，在终端需要`source`保存后再**重新打开**命令行窗口才可生效。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206112641.png)
+
+若环境变量配置成功，命令行显示`JMeter`图案及其版本号，如下：
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206112743.png)
+
+注意⚠️：配置完环境变量后，在终端需要`source`保存后再**重新打开**命令行窗口才可生效。
 
 ### 启动
 JMeter无论是通过命令行安装还是通过压缩包解压安装，最后都需要通过界面化启动来验证。
@@ -139,6 +169,8 @@ jmeter
 ```
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116143106.png)
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206105644.png)
 
 界面化可以启动成功，则说明对应Mac电脑安装`JMeter`成功。
 
@@ -151,3 +183,4 @@ jmeter
 - 命令行安装`JMeter`可直接终端输入命令启动。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230130151516.png)
+

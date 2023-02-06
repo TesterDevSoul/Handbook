@@ -132,6 +132,8 @@ netstat -an|findstr "端口号"
 
 点击下拉小三角可以看到目标控制器有**三**个选项，建议选择存放路径为：测试计划(`Test Plan`) -> 线程组(`Thread Group`) -> 录制控制器(`Recording Controller`)。
 
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206114527.png)
+
 存放在录制控制器下**优点**：
 
 1. 可以与其他编写的请求组件进行区分。
