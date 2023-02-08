@@ -1,7 +1,8 @@
-# JMeter启动介绍
+# JMeter启动日志及界面工作区介绍
 
 ## 本章要点
-1. JMeter启动日志
+
+1. 不同Java版本下JMeter的启动日志
 1. JMeter界面介绍
 
 
@@ -54,7 +55,7 @@ For load testing, use CLI Mode (was NON GUI):
    Modify current env variable HEAP="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m" in the jmeter batch file
 ```
 
-## JMeter工作区介绍
+## JMeter界面工作区介绍
 `JMeter`的主界面工作区主要分为**4**部分，如下：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116150926.png)
@@ -87,4 +88,6 @@ For load testing, use CLI Mode (was NON GUI):
 ## 总结
 - JMeter启动日志
   - Java8正常启动，Java11有告警可忽略。
-- JMeter界面分为四部分：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
+- JMeter界面工作区分为四部分：**菜单栏**、**工具栏**、**树状组件栏**和**组件内容栏**。
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230208140446.png)
