@@ -24,6 +24,11 @@
 主要有**录制**、**JDBC测试**、**BeanShell使用**、**构建Web测试计划**
 等等，每个功能界面都分为**基本步骤**和**详细截图**。
 
+
+也可直接点击**工具栏**的**模板**按钮：
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230208150013.png)
+
+
 #### 介绍
 
 在模板界面选择需要的模版后，点击 `Useful links`「用户链接」，则会链接到 `Apache JMeter` 官网查看详细步骤和截图。
