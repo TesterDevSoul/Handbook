@@ -49,7 +49,7 @@ brew install jmeter
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230130150002.png)
 
-### 安装路径查看
+### 查看JMeter安装路径
 
 命令行安装的默认安装的路径为`/usr/local/Cellar/jmeter/版本号`。
 
@@ -57,7 +57,7 @@ brew install jmeter
 
 下面来进行路径的查看及验证。
 
-#### 如何进行安装路径的查看？
+**问题**：如何进行安装路径的查看？
 
 **步骤**：
 
@@ -88,7 +88,7 @@ jmeter
 
 ### 卸载
 
-如果需要卸载，则直接在命令行输入以下命令：
+如果需要卸载`JMeter`，则直接在命令行输入以下命令：
 
 ```bash
 brew uninstall jmeter
@@ -99,7 +99,7 @@ brew uninstall jmeter
 
 注意⚠️：只能卸载`brew`命令行安装的`JMeter`。
 
-## 方式二：官网安装JMeter
+## 方式二：压缩包下载安装JMeter
 
 如果是要压缩包进行解压安装，则需要打开[官网](https://jmeter.apache.org/download_jmeter.cgi)。
 
@@ -109,22 +109,27 @@ brew uninstall jmeter
    
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116105918.png)
 
-### 解压
+### 压缩包解压
 
 2. 下载的压缩包解压到当前电脑的指定路径即可。本篇文章直接解压到当前用户目录下，如下所示：
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230106140822.png)
 
 
-
 ### 配置环境变量
+
 此时，虽然安装成功，但是需要对`JMeter`进行环境变量的配置，否则，无法直接使用命令行启动`JMeter`的界面化。
 
 ##### 1. 查看本地配置文件
 查看对应`shell`使用方式，如果是`zsh`则配置文件为`.zshrc`；如果是`bash`则配置文件为`.bash_profile`。
+
 ```bash
 echo $SHELL
 ```
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230208135616.png)
+
+
 ##### 2. 打开本地配置文件
 打开本地的配置文件，进行`JMeter`环境变量的配置。
 ```bash
@@ -159,10 +164,10 @@ jmeter -v
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206112743.png)
 
-注意⚠️：配置完环境变量后，在终端需要`source`保存后再**重新打开**命令行窗口才可生效。
+**注意⚠️**：配置完环境变量后，在终端需要`source`保存后再**重新打开**命令行窗口才可生效。
 
 ### 启动
-JMeter无论是通过命令行安装还是通过压缩包解压安装，最后都需要通过界面化启动来验证。
+`JMeter`无论是通过命令行安装还是通过压缩包解压安装，最后都需要通过界面化启动来验证。
 
 ```bash
 jmeter
