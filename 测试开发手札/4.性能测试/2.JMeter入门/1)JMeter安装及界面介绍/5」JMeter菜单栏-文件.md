@@ -46,7 +46,7 @@
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230116160553.png)
 
 
-##### 问：模版脚本的存放路径？
+##### 常见问题：模版脚本的存放路径？
 
 模版脚本都在`JMeter`哪里存在呢？
 
@@ -65,29 +65,6 @@
 
 **注意⚠️**：先打开的脚本文件中测试计划下的组件会放在上面。
 
-#### 需求
-
-将**2**个`JMX`脚本文件合并为一个脚本文件。
-
-#### 准备工作
-
-这里准备了**2**个脚本，一个脚本为`ATest.jmx`，一个脚本为`BTest.jmx`。
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128111317.png)
-
-
-#### 步骤
-
-1. 打开新的测试计划，选择文件下的**合并**，根据路径选择`BTest.jmx`，可以看到当前脚本的测试计划下添加对应组件，但是该脚本还没有进行保存。
-
-   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128112255.png)
-
-   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128112821.png)
-
-1. 再次选择合并，根据路径选择`ATest.jmx`，可以看到当前脚本的测试计划下继续添加`ATest`脚本的组件。
-
-   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128113051.png)
-
 #### 应用场景
 
 功能点分开多个人编写压测脚本，最终链路压测或需求合并压测时，需要把多个压测脚本合并为一个脚本。
@@ -100,6 +77,30 @@
 1. 可以进行多个脚本的合并，没有个数限制。
 
 1. 合并选择对应文件后，组件会一直往后叠加。
+
+
+#### 业务需求
+
+将**2**个`JMX`脚本文件合并为一个脚本文件。
+
+##### 准备工作
+
+这里准备了**2**个脚本，一个脚本为`ATest.jmx`，一个脚本为`BTest.jmx`。
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128111317.png)
+
+
+##### 步骤
+
+1. 打开新的测试计划，选择文件下的**合并**，根据路径选择`BTest.jmx`，可以看到当前脚本的测试计划下添加对应组件，但是该脚本还没有进行保存。
+
+   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128112255.png)
+
+   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128112821.png)
+
+1. 再次选择合并，根据路径选择`ATest.jmx`，可以看到当前脚本的测试计划下继续添加`ATest`脚本的组件。
+
+   ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128113051.png)
 
 
 
