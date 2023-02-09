@@ -77,12 +77,6 @@
 >使用文件的合并功能，可以节省复制各种重复组件的时间。
 
 
-#### 注意
-
-1. 可以进行多个脚本的合并，没有个数限制。
-
-1. 合并选择对应文件后，组件会一直往后叠加。
-
 
 #### 业务需求
 
@@ -108,6 +102,12 @@
    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230128113051.png)
 
 
+##### 注意
+
+1. 合并功能中可以进行多个脚本的合并，**没有个数限制**。
+
+1. 合并选择对应文件后，**组件**会一直**往后叠加**。
+
 
 ### 保存
 
@@ -127,10 +127,14 @@
 
 选中的组件保存为一个测试片段。
 
-#### 注意
-其中，**线程组**、**测试计划**、**工作台** 不能保存为一个测试片段。
 
-如果选中则会提示如下报错：
+
+**测试片段**：该组件是一种特殊类型的控制器，它存在于测试计划树中，**与线程组元素处于同一级别**。
+
+
+注意⚠️：**线程组**、**测试计划** 组件不能保存为一个测试片段。
+
+若选中**线程组**、**测试计划**组件后点击**保存为测试片段**则会提示如下报错：
 
 ```bash
 One of the selected nodes cannot be put inside a Test Fragment
@@ -139,18 +143,14 @@ One of the selected nodes cannot be put inside a Test Fragment
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/1674012683977.png)
 
 
-#### 测试片段
-
-**测试片段**组件是一种特殊类型的控制器，它存在于测试计划树中，**与线程组元素处于同一级别**。
-
-#### 测试片段保存
+#### 保存结果
 
 测试片段保存`HTTP`请求组件为新的`JMX`脚本文件。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230118115120.png)
 
 
-#### 测试片段与线程组的区别
+#### 测试片段 VS 线程组
 
 **测试片段**与**线程组**的区别在于：
 
@@ -168,9 +168,12 @@ One of the selected nodes cannot be put inside a Test Fragment
 
 
 ## 总结
+
 - 文件模块包含的功能：打开、模板...、合并、保存、保存为测试片段 等等。
 - 模版的使用及脚本的存放位置。
 - 合并的步骤及使用场景。
 - 测试片段的概念。
 - 测试片段与线程组的区别。
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230130170239.png)
+
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230208173143.png)
