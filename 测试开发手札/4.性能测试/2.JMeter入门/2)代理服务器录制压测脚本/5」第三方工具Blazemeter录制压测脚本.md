@@ -172,7 +172,8 @@
 点击`save`按钮需要等待几分钟，脚本生成并自动下载到当前电脑。
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230209153704.png)
 
-##### 2.3 JMeter脚本验证。
+##### 2.3 JMeter脚本验证
+
 [QQNEW_DEMO](QQNEW_DEMO.jmx)
 
 JMeter添加查看结果树，点击运行查看结果。
@@ -194,9 +195,3 @@ End User Experence Monitoring（JMeter & Selenium）：联合测试；
 
 
 ## 总结
-- 总结一
-- 总结二
-- 总结三
-
-
-[项目演示地址](https://github.com/testeru-pro/junit5-demo/tree/main/junit5-basic)
