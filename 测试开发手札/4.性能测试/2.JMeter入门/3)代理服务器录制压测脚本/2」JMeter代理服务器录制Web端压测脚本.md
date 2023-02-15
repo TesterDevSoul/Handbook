@@ -1,4 +1,4 @@
-# JMeter代理服务器录制iOS端压测脚本
+# JMeter代理服务器录制Web端压测脚本
 
 ## 本章要点
 1. 录制的流程
@@ -8,26 +8,48 @@
 
 ## 录制流程
 
+1. 压测对象。
+2. 压测页面。
+3. 业务步骤。
+4. 录制步骤。
+5. 优化。
+
+
 ### 压测对象
 
-选用极客时间的**课程**页面进行压测脚本的录制。
+选用腾讯的[新闻](https://new.qq.com/)页面进行压测脚本的录制。
+
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230213155153.png)
 
 ### 压测页面
 
-涉及到的压测页面包括**三**个，分别是：极客时间**搜索页面**、**课程**页面、课程**评价**页面。
+涉及到的压测页面包括**三**个，分别是：腾讯**新闻首页**、新闻的**财经**页面、新闻的**科技**页面。
 
 
 ### 业务步骤
 
-1. 打开极客时间，点击搜索，输入课程名称。
-2. 点击搜索结果，进入到课程详情页面。
-3. 点击课程页面的评价`Tab`跳转到评价页面。
+1. 打开浏览器，访问腾讯[新闻](https://new.qq.com/)页面。
+2. 点击页面Tab栏中的[财经](https://new.qq.com/ch/finance/)跳转到财经新闻页面。
+3. 点击页面Tab栏中的[科技](https://new.qq.com/ch/tech/)跳转到科技新闻页面。
+
 
 以上为业务的功能测试流程。
 
 ### 录制步骤
 
 下面来看下怎样使用`JMeter`的代理服务器来录制压测脚本。
+
+1. 打开JMeter的GUI界面。
+2. 保存脚本。
+3. 添加HTTP(S) 测试脚本记录器。
+4. 录制的请求路径组件。
+5. 配置HTTP(S)测试脚本记录器。
+6. 启动代理服务器。
+7. 证书配置。
+8. 浏览器代理配置。
+9. 执行。
+
 
 #### 1. 打开JMeter的GUI界面
 
@@ -43,7 +65,7 @@
 
 注意⚠️：要`jmx`结尾说明当前文件是一个`JMeter`脚本。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205170815.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203145017.png)
 
 
 脚本保存成功后，`JMeter`界面会显示文件名称及其路径。
@@ -101,7 +123,7 @@ netstat -an|findstr "端口号"
 
 如果命令行对应结果没有输出，则代表当前端口号没有被占用。
 
-当有相关进程输出时，说明端口号被占用，此时需要修改，比如修改端口号为**6666**。
+当有相关进程输出时，说明端口号被占用，此时需要修改，比如修改端口号为6666。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203163430.png)
 
@@ -115,7 +137,6 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206114527.png)
 
-
 存放在录制控制器下**优点**：
 
 1. 可以与其他编写的请求组件进行区分。
@@ -123,7 +144,6 @@ netstat -an|findstr "端口号"
 2. 要删除录制相关的请求组件时，直接使用录制控制器的一键清除按钮即可。
 
 3. 录制的请求组件可直接在该节点下保存为新的测试计划。
-
 
 ##### 脚本编码格式设置
 
@@ -160,6 +180,9 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173054.png)
 
+代理服务器启动成功时界面如下：
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230206115736.png)
 
 ##### 证书验证
 
@@ -171,97 +194,67 @@ netstat -an|findstr "端口号"
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203173327.png)
 
-#### 7. 证书配置
-iOS手机端进行证书的配置。
 
-###### 1. 前置条件
+##### CA证书作用
+`CA`「`Certificate Authority`」：**证书授权中心**，负责管理和签发证书的第三方机构。
+一般，`CA`证书必须是所有行业和所有公众都信任的、认可的，因此它具有足够的权威性。`CA`证书就是权威机构颁发的证书。
 
-电脑端安装了Python环境，Python2或者Python3都可以。本篇文章演示的环境是Python3。
-
-命令行验证环境：
-```bash
-python3 -V
-```
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205155436.png)
-
-###### 2. 启动httpsever
- 
-快速搭建电脑服务端，让手机端可以访问电脑本地文件进行传输下载。
-
-```bash
-# 1.cd到JMeter安装路径下
-cd apache-jmeter-5.5 
-# 2.启动前验证端口是否被占用 ：netstat -an|grep "端口号"
-netstat -an|grep "8080"
-# 3.Python3启动sever ：python3 -m http.server 端口号
-python3 -m http.server 8080
-# Python2启动server ：python -m SimpleHTTPServer 8080
-```
-
-端口只要没被占用，则启动成功。该服务启动成功，就是为了让手机端下载`JMeter`生成的证书。
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205160145.png)
-
-###### 3. 手机访问网址
-
-访问电脑的网址时，需要首先获取电脑端的IP，使用命令如下：
-
-```bash
-ifconfig | grep inet
-```
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205160658.png)
-
-**避坑指南**：手机访问网址连接不通，无法打开该网址。
-
-**解决方案**：若手机访问网址连接不通，建议使用**同一个WI-FI**解决。
-
-###### 4. 证书下载
-
-使用`scrcpy`将手机屏幕投屏到电脑端：
-```bash
-# mac电脑安装scrcpy
-brew install scrcpy
-```
-访问成功后对应手机端显示文件目录，找到证书后点击允许，下载到手机端。
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205162022.png)
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205162127.png)
-
-下载完成后，对应电脑端开启的`httpserver`可以关闭掉。
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205163749.png)
+在本文中，生成的`CA`证书就是客户端与`JMeter`之间的相互认可的一个信用凭证。
 
 
-###### 4. iOS证书配置
 
-设置 --> 通用 --> 描述文件 --> 安装信任JMeter开头的描述文件。
+#### 7. 证书配置 - 
 
->进入设置中选择描述文件进行安装信任。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205162543.png)
+##### Mac系统
+###### 1. 导入
 
-信任成功后，对应查看证书如下：
+钥匙串访问 -> 系统 -> 文件 -> 导入项目，选择对应证书地址导入。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205163530.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203175249.png)
 
-此时只是配置了证书，但是该证书还没有被手机所信任。
+###### 2. 信任
+   
+导入后发现对应证书未被信任。
 
-###### 5. iOS证书信任
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203180154.png)
 
-设置 --> 通用 --> 关于本机 --> 证书信任设置 --> 打开JMeter开头的根证书设置按钮。
+点开证书发现证书配置是使用系统默认，系统为了保证安全性，默认手动添加的证书都是不被信任的。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205163617.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203180449.png)
 
-#### 8. iOS代理配置
+修改完成后，直接关闭输入密码，此时的证书被完全信任。
 
-设置 --> WI-FI --> 配置代理。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203180628.png)
 
-选择手动，配置服务器及端口号。服务器IP为电脑端IP地址，端口号为JMeter代理服务器设置的端口号。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230203181717.png)
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205164456.png)
+##### Window系统
+
+
+#### 8. 浏览器代理配置
+
+##### Mac系统
+
+###### Chrome浏览器代理配置
+使用第三方插件`SwitchyOmega`来进行代理配置。
+1. 新建名为`jmeter`的代理模式，类型为默认的代理服务器选项。
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205110359.png)
+
+2. 代理配置。
+    - 请求为`HTTP`协议的代理，所以配置代理服务器的代理协议为`HTTP`。
+    - `JMeter`代理服务器启动的地址是本地，所以配置代理服务器的`IP`时为**127.0.0.1**。
+    - `JMeter`代理服务器修改的监听端口号为**6666**，这里配置的代理端口与`JMeter`的保持一致为**6666**。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205110722.png)
+
+    >最后点击应用选项保存以上配置。
+3. 应用代理。
+    >在浏览器的扩展程序中选中`jmeter`模式，此时浏览器的所有请求都会通过该端口进行转发给`JMeter`的代理服务器。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205112654.png)
+
+###### FixFox浏览器代理配置
+
+##### Window系统
 
 #### 9. 执行
 
@@ -272,17 +265,16 @@ brew install scrcpy
 
 3. 关闭浏览器代理配置。
    
-4. JMeter脚本验证。[录制](录制iOS.jmx)
+4. JMeter脚本验证。[录制](录制Web.jmx)
     >JMeter添加查看结果树，点击运行查看结果。
-    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205170256.png)
-    
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205113356.png)
 
 注意⚠️：
-当关闭`JMeter`代理服务器时一定要同时关闭手机代理配置，否则再使用手机时无法进行网络访问。
+当关闭`JMeter`代理服务器时一定要同时关闭浏览器代理配置，否则再使用浏览器时无法进行网络访问。
 
 ## 优化
 
-虽然业务逻辑步骤只是点了几个页面，但是录制出来的请求有很多个。
+虽然业务逻辑步骤只是点了两个页面，但是录制出来的请求有很多个。
 
 下面我们对这些请求进行一个分析，发现录制的脚本中有很多`js`或者`jpg`或者`css`等等结尾的请求，这些请求统称为静态资源。公司里面的**静态资源**是不会和请求的服务端共同放在一个服务器上。
 
@@ -299,13 +291,13 @@ brew install scrcpy
 
 静态资源会存放在`CDN`服务器上，`CDN`服务包含：**公司自建的CDN服务**、**又拍云**、**阿里云**、**七牛云**等等。
               
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205171203.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205135626.png)
 
 #### 过滤规则
 
 录制的请求需要进行过滤，过滤的原则为去掉请求中的静态资源，只录制服务端的请求URL，不录制其他的图片资源内容。
 
-- `Exclude`：过滤的内容
+- `Exclude`：过滤的内容，去掉一些静态请求比如：图片、js、css等
 - `Include`：包含的内容
 
 
@@ -314,7 +306,7 @@ brew install scrcpy
 在匹配规则内进行添加，`Include Patterns`添加网站的域名包含规则，只录制业务请求的域名，其他请求域名不录制，比如腾讯的[新闻](https://new.qq.com/)相关页面表达式为：
 
 ```bash
-.*\.(geekbang\.org).*
+(new\.qq\.com).*
 ```
 
 `Exclude Patterns`添加录制请求的静态资源过滤规则，图片一般为`png`/`jpg`结尾，前端渲染配置一般为`css`/`js`/`jsp`，视频资源为`mp4`，动图一般以`gif`结尾。所以，静态资源过滤表达式为：
@@ -324,32 +316,32 @@ brew install scrcpy
 
 注意⚠️：在表达式中如果是域名的`.`符号，需要添加`\`转义字符。
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205172613.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205144143.png)
 
 #### 优化验证
 
-[优化](录制iOS优化.jmx)
+[优化](录制Web优化.jmx)
 
+根据录制步骤重新启动代理服务器，浏览器选择代理配置后，访问腾讯的[新闻](https://new.qq.com/)，录制的请求少很多，并且没有相关静态资源的内容加载进来，此时说明对应过滤的匹配规则正确。
 
-根据录制步骤重新启动代理服务器，iOS选择代理配置后，访问极客时间，录制的请求少很多，并且没有相关静态资源的内容加载进来，此时说明对应过滤的匹配规则正确。
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205171800.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205144105.png)
 
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205173514.png)
 
 ## 总结
+
 - `JMeter`代理服务器配置内容
   - 端口
   - `URL`过滤规则：`Include`、`Exclude`
   - 录制脚本的存放位置
-- iOS的证书的下载及配置
+- 不同浏览器端配置代理设置
 - 录制步骤
   - 开启JMeter代理
-  - JMeter证书下载、配置
-  - 配置iOS手机端代理
+  - 不同系统的JMeter证书导入
+  - 不通浏览器的JMeter证书配置
+  - 配置浏览器代理
   - 业务操作
   - 使用过滤匹配来优化录制请求中的静态资源
 - 运行验证
   - JMeter录制完成后查看是否有静态资源请求
   - 添加查看结果树，运行脚本查看结果
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205173136.png)
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205150622.png)
