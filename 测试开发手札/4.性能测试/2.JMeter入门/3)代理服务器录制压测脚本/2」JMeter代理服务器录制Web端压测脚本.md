@@ -121,6 +121,8 @@ netstat -an|grep "端口号"
 netstat -an|findstr "端口号"
 ```
 
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230215173059.png)
+
 如果命令行对应结果没有输出，则代表当前端口号没有被占用。
 
 当有相关进程输出时，说明端口号被占用，此时需要修改，比如修改端口号为6666。
@@ -203,7 +205,7 @@ netstat -an|findstr "端口号"
 
 
 
-#### 7. 证书配置 - 
+#### 7. 证书配置
 
 
 ##### Mac系统
@@ -265,9 +267,15 @@ netstat -an|findstr "端口号"
 
 3. 关闭浏览器代理配置。
    
-4. JMeter脚本验证。[录制](录制Web.jmx)
-    >JMeter添加查看结果树，点击运行查看结果。
-    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230205113356.png)
+4. JMeter脚本验证回放。[录制](录制Web.jmx)
+   - 检验代码等正确性是测试的老本行。
+   - 压测代码也是代码。
+   - 自己的代码也必须检验。
+   - JMeter添加查看结果树，点击运行查看结果。
+     - 查看结果树的**⽤途**：看请求和响应「Req/Resp」的详情
+    >为了检验，线程组只设置⼀个并发、⼀次循环即可。
+    >单击开始运⾏按钮，检查请求/响应是否都成功。
+    ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230215174112.png)
 
 注意⚠️：
 当关闭`JMeter`代理服务器时一定要同时关闭浏览器代理配置，否则再使用浏览器时无法进行网络访问。
