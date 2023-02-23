@@ -1,5 +1,6 @@
 # JUnit5 Tutorial
-<table border="1" cellspacing="0">
+
+<table >
     <tr>
         <th>模块</th>
         <th>章节</th>
@@ -50,7 +51,7 @@
     </tr>
     </tr>
     <tr>
-        <td><a href="/archives/junit11">基本注解顺序及用例策略</a></td>
+        <td><a href="/archives/junit11">基本注解运行顺序</a></td>
         <td>注解在同一个类中运行顺序；<br>类之间继承，注解的运行顺序</td>
     </tr>
     <tr>
