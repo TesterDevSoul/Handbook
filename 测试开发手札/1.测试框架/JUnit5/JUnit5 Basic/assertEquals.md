@@ -1,4 +1,4 @@
-# 测试用例断言 - assertEquals
+# assertEquals
 ## 本章要点
 1. 断言概念&步骤
 1. assertEquals()方法参数
@@ -30,6 +30,7 @@
 ## assertEquals( )
 
 `assertEquals()`方法为判断两个对象是否相等，如果相等则结果为`true`，否则为`false`。
+
 >类似于字符串比较使用的`equals()`方法，但是断言没有返回值。如下图，无论`assertEquals()`方法内传入的参数类型是什么，最终的方法返回值都是`void`。
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104154120.png)

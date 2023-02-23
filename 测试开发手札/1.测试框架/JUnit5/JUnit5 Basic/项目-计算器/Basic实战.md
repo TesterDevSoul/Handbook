@@ -96,89 +96,35 @@ public class MySUT {
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230223170046.png)
 
-### 涉及知识点
+idea创建maven项目，导入JUnit5相关依赖，声明对应测试类为**SumTest**。
+
+### sumOne
+
+测试方法为**sumOne()**。
+
+#### 步骤
+1. 创建加法计算器对象。
+2. 生成唯一ID。
+3. log日志打印：`开始进行{}计算,加法`。
+4. 业务逻辑调用，返回结果声明为result。
+5. log日志打印计算结果：`计算结果为{},result`。
+6. 销毁ID操作。
+7. 计算的结果断言。
+
+
+#### 涉及知识点
 
 |知识点|备注|
 |:-:| --- |
-|[@Test注解](/archives/junit07)|使用@Test注解创建测试用例|
-|[基本断言-assertEquals](/archives/junit08)|assertEquals()参数及各个含义|
+|[@Test注解](/archives/junit07)| 1. @Test注解是方法上的注解。<br>2. 一个测试类中可以有多个测试方法，即多个@Test注解修饰的方法。<br>3. @Test注解修饰的方法返回值类型是void。<br>4. @Test注解修饰的方法的内容是测试用例执行的具体内容及断言结果。|
+|[assertEquals](/archives/junit08)|1. assertEquals()可以有2个参数，也可以有3个参数。<br>2.参数分别为：<br>&nbsp;&nbsp;&nbsp;&nbsp;expected「期望值」;<br>&nbsp;&nbsp;&nbsp;&nbsp;actual「实际值」;<br>&nbsp;&nbsp;&nbsp;&nbsp;message「断言失败提示语」。|
 
+#### 示例代码
 
+- 【正向】整数相加，结果计算正确
 
-
-
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230223120127.png)
-
-
-### 计算器测试用例
-#### 被测系统
 
 ```java
-public class MySUT {
-    //获得具有所需名称的记录器
-    static final Logger logger = getLogger(lookup().lookupClass());
-
-    String name;//用例名
-
-    public MySUTOne(String name) {
-        this.name = name;
-        logger.info("Open {} ", name);
-    }
-
-    //连续添加
-    public int sum(int... numbers) {
-        if(Arrays.stream(numbers).anyMatch(u -> u == 100) | Arrays.stream(numbers).anyMatch(u -> u == -100)){
-            //
-            logger.warn("Enter an integer is 100！");
-            throw new NumberFormatException("Enter an integer is 100！");
-        }else if (Arrays.stream(numbers).anyMatch(u -> u > 99) |
-                  Arrays.stream(numbers).anyMatch(u -> u < -99)){
-            // 请输入范围内的整数
-            logger.warn("Please enter an integer in the range!");
-            throw new IllegalArgumentException("Please enter an integer in the range!");
-        }else {
-            return IntStream.of(numbers).sum();
-        }
-    }
-}
-```
-
-#### 加法正向测试用例
-##### 步骤
-1. 被测系统计算器创建并命名：`My Basic Test Project`
-2. 日志打印开始测试：`Begin Sum Test`
-3. 测试用例步骤调用
-4. 日志打印计算结果：`Sum Result：`
-
-##### 代码
-```java
-package top.testeru.num;
-
-/**
- * @author www.testeru.top
- * @version 1.0.0
- * @Project junit5-modules
- * @Description 加法功能的测试用例
- * @createTime 2023年02月23日 11:26:47
- */
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import top.testeru.MySUT;
-
-import static java.lang.invoke.MethodHandles.lookup;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.slf4j.LoggerFactory.getLogger;
-
-/**
- * 1. 创建加法计算器对象 -- new有参构造，传入参数值为：加法计算器
- * 2. 生成唯一ID
- * 3. log日志打印：开始进行{}计算,加法
- * 4. 业务逻辑调用，返回结果声明为result  [2+8=10]   [4+3+8=15]   [100+0=100]  [-100+8=-92]
- * 5. log日志打印计算结果：计算结果为{},result
- * 6. 销毁ID操作
- * 7. 计算的结果断言 -- assertEquals()，断言失败msg：2+8计算错误
- */
 public class SumTest {
     static final Logger logger = getLogger(lookup().lookupClass());
 
@@ -207,11 +153,75 @@ public class SumTest {
     }
 }
 ```
-点击测试方法左侧运行按钮，只运行当前测试方法，输出结果如下：
-![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104145755.png)
 
->可以创建多个测试方法sum，分别为:sum1()、sum2()、sum3()、sum4()<br>
->运行顺序为：sum1()、sum2()、sum3()、sum4()；与方法所在前后位置无关
+### sumBoundaryErrorOne
+
+测试方法为**sumBoundaryErrorOne()**。
+
+#### 步骤
+1. 创建加法计算器对象。
+2. 生成唯一ID。
+3. log日志打印：`开始进行{}计算,加法`。
+4. 计算的异常结果断言，返回异常声明为exception。
+5. 销毁ID操作。
+6. 异常的提示语断言。
+
+#### 涉及知识点
+
+|知识点|备注|
+|:-:| --- |
+|[assertThrows & assertThrowsExactly](/archives/junit08)||
+
+#### 示例代码
+- 【边界】无效边界值相加，抛出异常并断言提示信息
+
+
+```java
+    @Test
+    public void sumBoundaryErrorOne(){
+        //1. 创建加法计算器对象 -- new有参构造，传入参数值为：加法计算器
+        MySUT mySUT = new MySUT("Sum Calculator");
+        //2. 生成唯一ID
+        mySUT.initId();
+        //3. log日志打印：开始进行{}计算,加法
+        logger.info("Start adding...");
+        //4. 计算的结果断言
+        /**
+         * 异常断言：
+         * assertThrows「抛出异常或异常的父类」：   expectedType  抛出的异常类型；   executable    异常业务
+         * assertThrowsExactly「抛出当前异常类」
+         */
+        /*Exception throwException = assertThrows(
+                                        RuntimeException.class,
+                                        () -> mySUT.sum(100, 1));*/
+//        Exception exception = assertThrowsExactly(RuntimeException.class, () -> mySUT.sum(100, 1));
+        Exception exception =assertThrowsExactly(
+                                        NumberFormatException.class,
+                                        () -> mySUT.sum(100, 1));
+
+        mySUT.destroyId();
+        //5、异常信息提示语验证
+        //assertTrue(exception.getMessage().contains("enter an integer in the range"));
+        assertEquals("Enter an integer is 100！",exception.getMessage());
+    }
+```
+
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230223174526.png)
+
+
+## 阶段二
+
+重复代码进行优化。创建基本类BaseTest，使测试类继承BaseTest。
+把一些重复的代码提取出来放在BaseTest中。
+### Before
+
+每次业务逻辑相关测试代码运行前要运行的步骤，提取出来。
+
+如果是只运行一次，则提取到@BeforeAll注解修饰的方法里面。
+
+如果是需要在每个测试方法之前都要运行一次，则提取到@BeforeEach注解修饰的方法内。
+#### 步骤
+1. BaseTest
 
 ## 总结
 - 总结一
