@@ -117,6 +117,7 @@
 ```
 
 ### 运行原理
+
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104121305.png)
 
 代码运行工具「IDE」运行`@Test`注解修饰的测试用例时通过`JUnit5`框架的`junit-jupiter`组件运行。
@@ -125,23 +126,45 @@
 `@Test`注解其实就是告诉 `JUnit5` 框架需要运行哪些测试方法。
 
 ### @Test 使用
+
 `@Test`注解修饰的方法相当于声明的**测试用例**。
 
+#### 1. 注解位置
+
+1. `@Test`注解是方法上的注解。
+   
+>`@Test`注解修饰方法时，放在方法上方。
+
+#### 2. 注解方法声明规则
+
 1. 编写类名一般以`Test`开头或结尾。「类名规范」
-1. `@Test`注解导包为`org.junit.jupiter.api.Test`。「注解导包」
-1. `@Test`注解是方法上的注解。「注解位置」
-    >`@Test`注解修饰方法时，放在方法上方。
-1. `@Test`修饰的方法没有**返回值**，即返回值类型为`void`。「注解修饰方法声明规则」
+
+2. `@Test`注解导包为`org.junit.jupiter.api.Test`。「注解导包」
+
+3. `@Test`修饰的方法没有**返回值**，即返回值类型为`void`。
+   
+#### 3. 注解运行规则
+
 1. `@Test`注解修饰的方法可直接运行。
-1. 一个测试类里可以有多个`@Test`注解修饰的方法。「注解个数」
+
+2.  `@Test`注解修饰的方法有多个时，运行顺序为方法名的执行顺序。「注解修饰方法运行顺序」
+
+
+#### 4. 注解方法内容
+
 1. `@Test`注解修饰的方法内编写的内容为：测试用例执行的具体内容及断言结果。「用例编写」
-2. `@Test`注解修饰的方法有多个时，运行顺序为方法名的执行顺序。「注解修饰方法运行顺序」
+
+
+
+#### 5. 注解个数
+
+1. 一个测试类里可以有多个`@Test`注解修饰的方法。「注解个数」
 
 ### Hello @Test
 ```java
 import org.junit.jupiter.api.Test;
 
-public class An_01Test_Test {
+public class AnTest {
     @Test
     public void one(){
         System.out.println("第一个测试用例");
@@ -158,6 +181,7 @@ public class An_01Test_Test {
 
 
 ### 与Java的main()区别
+
 - Class类中**方法个数不同**
   - Java中的`main()`方法在一个Class类中只能有**一**个
   - `@Test`注解修饰的方法在一个Class类中可以有**多**个
@@ -193,4 +217,4 @@ public class An_01Test_Test {
   5. `@Test`注解里面编写的内容是测试用例执行的具体内容及断言结果
 - 导包不要导错误
 
-[项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5-modules/junit5-basic/src/test/java/top/testeru/basic/An_01Test_Test.java)
+[项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5-basic/src/test/java/top/testeru/basic/AnTest.java)
