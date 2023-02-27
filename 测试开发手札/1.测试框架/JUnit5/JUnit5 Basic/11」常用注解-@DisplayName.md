@@ -5,6 +5,7 @@
 
 ## @DisplayName注解
 
+类和方法的注解。
 
 ### 运行原理
 
@@ -63,7 +64,7 @@ public class AnDisplayNameTest {
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230227115953.png)
 
-#### 总结
+## 总结
 
 @DisplayName注解：
 

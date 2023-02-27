@@ -158,12 +158,12 @@
 1. `@Test`注解修饰的方法内编写的内容为：测试用例执行的具体内容及断言结果。「用例编写」
 
 
-
 #### 5. 注解个数
 
 1. 一个测试类里可以有多个`@Test`注解修饰的方法。
 
 ### Hello @Test
+
 ```java
 import org.junit.jupiter.api.Test;
 
@@ -178,8 +178,11 @@ public class AnTest {
 
 注意⚠️：
 - 导包不要导错，不要导其他框架的`Test`包。
+
 #### IDEA运行
+
 由于目前测试类下只有一个测试用例，则可以直接点**类左侧的运行**按钮，同样，也可以直接点击`@Test`注解修饰的方法的左侧的运行按钮。
+
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230104143613.png)
 
 
