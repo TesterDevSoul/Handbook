@@ -31,13 +31,16 @@
 
 #### 2. 注解方法声明规则
 
-1. `@BeforeAll`修饰的方法没有**返回值**并且为静态方法，即方法由`static`修饰且返回值类型为`void`。
+1. `@BeforeAll`修饰的方法没有**返回值**并且为**静态方法**，即方法由`static`修饰且返回值类型为`void`。
+
+2. `@BeforeAll`注解修饰的方法可以被继承。
+
 
 #### 3. 注解运行规则
 
 1. `@BeforeAll`修饰的方法在测试类里面运行一次，并且是在所有的方法之**前**运行一次，与其在代码中的前后顺序无关。「注解修饰方法运行顺序」
 
-1. `@BeforeAll`注解修饰的方法不可直接运行。
+2. `@BeforeAll`注解修饰的方法不可直接运行。
 
 #### 4. 注解方法内容
 
@@ -107,8 +110,7 @@ public class AnAllTest {
 
 #### 2. 注解方法声明规则
 
-1. `@AfterAll`修饰的方法没有**返回值**并且为静态方法，即方法由`static`修饰且返回值类型为`void`。「
-
+1. `@AfterAll`修饰的方法没有**返回值**并且为**静态方法**，即方法由`static`修饰且返回值类型为`void`。2. `@AfterAll`注解修饰的方法可以被继承。
 #### 3. 注解运行规则
 
 1. `@AfterAll`修饰的方法在测试类里面运行一次，并且是在所有的方法之**后**运行一次，与其在代码中的前后顺序无关。「注解修饰方法运行顺序」
@@ -203,10 +205,12 @@ org.junit.platform.commons.JUnitException: @AfterAll method 'public void top.tes
 
 ## 总结
 - `All`注解使用
-  1. `@BeforeAll`、`@AfterAll`注解修饰的方法不可直接运行
-  2. `@BeforeAll`、`@AfterAll`注解可同时修饰一个方法
-  3. `@BeforeAll`、`@AfterAll`注解修饰的方法**static修饰**并且**没有返回值**，即方法声明时为`static void`
-  4. `@BeforeAll`注解在类的所有方法之**前**运行；`@BeforeAll`注解注解在类的所有方法之**后**运行，**无论断言是否失败**；
+  1. `@BeforeAll`、`@AfterAll`注解修饰的**方法不可直接运行**。
+  2. `@BeforeAll`、`@AfterAll`注解可同时修饰一个方法。
+  3. `@BeforeAll`、`@AfterAll`注解修饰的方法**static修饰**并且**没有返回值**，即方法声明时为`static void`。
+  4. `@BeforeAll`、`@AfterAll`注解都可被继承。
+  5. `@BeforeAll`注解在类的所有方法之**前**运行；`@BeforeAll`注解注解在类的所有方法之**后**运行，**无论断言是否失败**。
+   
 
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5-basic/src/test/java/top/testeru/basic/AnAllTest.java)

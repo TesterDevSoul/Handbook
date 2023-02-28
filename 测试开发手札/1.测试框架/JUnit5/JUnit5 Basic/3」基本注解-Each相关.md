@@ -25,6 +25,8 @@
 
 `@BeforeEach`注解修饰的方法相当于**每个测试方法的前置条件**。
 
+表示该注释的方法应该被执行之前的每个 `@Test`，`@RepeatedTest`，`@ParameterizedTest`，或`@TestFactory`方法在当前类。
+
 #### 1. 注解位置
 
 1. `@BeforeEach`注解是方法上的注解。
@@ -34,6 +36,7 @@
 #### 2. 注解方法声明规则
 
 1. `@BeforeEach`修饰的方法没有**返回值**，即返回值类型为`void`。
+2. `@BeforeEach`注解修饰的方法可以被继承。
 
 
 #### 3. 注解运行规则
@@ -100,6 +103,8 @@ public class AnEachTest {
 
 `@AfterEach`注解修饰的方法相当于**每个测试方法的后置条件**。
 
+表示被注解的方法应该在当前类中的每个每个 `@Test`，`@RepeatedTest`，`@ParameterizedTest`，或`@TestFactory`方法之后执行;
+
 #### 1. 注解位置
 
 1. `@AfterEach`注解是方法上的注解。
@@ -109,6 +114,8 @@ public class AnEachTest {
 #### 2. 注解方法声明规则
 
 1. `@AfterEach`修饰的方法没有**返回值**，即返回值类型为`void`。
+
+2. `@AfterEach`注解修饰的方法可以被继承。
 
 
 #### 3. 注解运行规则
@@ -182,10 +189,11 @@ public class AnEachTest {
 
 ## 总结
 - `Each`注解使用
-  1. `@BeforeEach`、`@AfterEach`注解修饰的方法不可直接运行
-  2. `@BeforeEach`、`@AfterEach`注解可同时修饰一个方法
-  3. `@BeforeEach`、`@AfterEach`注解修饰的方法没有返回值，即方法声明时为`void`
-  4. `@BeforeEach`注解在每个`@Test`之**前**都运行一次；`@AfterEach`注解在每个`@Test`之**后**都运行一次，**无论断言是否失败**；
+  1. `@BeforeEach`、`@AfterEach`注解修饰的方法不可直接运行。
+  2. `@BeforeEach`、`@AfterEach`注解可同时修饰一个方法。
+  3. `@BeforeEach`、`@AfterEach`注解修饰的方法没有返回值，即方法声明时为`void`。
+  4.  `@BeforeEach`、`@AfterEach`注解都可被继承。
+  5. `@BeforeEach`注解在每个`@Test`之**前**都运行一次；`@AfterEach`注解在每个`@Test`之**后**都运行一次，**无论断言是否失败**；
 
 
 [项目演示地址](https://github.com/TesterDevSoul/Tutorials/blob/master/junit5-basic/src/test/java/top/testeru/basic/AnEachTest.java)
