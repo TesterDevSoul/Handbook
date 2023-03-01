@@ -59,11 +59,11 @@
 
 |章节|备注|
 |:-:| --- |
-|[31」jsckson介绍](/archives/junit31)|使用@DisplayName注解显示说明当前测试类及测试方法|
-|[32」jsckson-YAML文件解析](/archives/junit32)||
-|[33」jsckson - CSV文件解析](/archives/junit33)||
-|[34」 - Excel文件解析](/archives/junit34)||
-|[35」snakeyaml- YAML文件解析](/archives/junit35)||
+|[31」数据驱动介绍](/archives/junit31)||
+|[32」YAML文件解析-Jackson](/archives/junit32)||
+|[33」CSV文件解析-Jackson](/archives/junit33)||
+|[34」Excel文件解析](/archives/junit34)||
+|[35」YAML文件解析-snakeyaml](/archives/junit35)||
 |[36」](/archives/junit36)||
 |[37」](/archives/junit37)||
 |[38」](/archives/junit38)||
