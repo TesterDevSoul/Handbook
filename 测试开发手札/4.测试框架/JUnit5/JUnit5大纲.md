@@ -5,7 +5,7 @@
 |:-:| --- |
 |[JUnit5框架组成](/archives/junit01)|JUnit5框架组成部分及作用|
 
-
+# 基本
 ## 基本注解及断言
 
 |章节|备注|
@@ -85,3 +85,19 @@
 |[48」hamcrest - 数字断言](/archives/junit47)||
 |[49」hamcrest - Text断言](/archives/junit48)||
 |[50」计算器实战5](/archives/junit50)||
+
+# 进阶
+## 并行配置
+
+|章节|备注|
+|:-:| --- |
+|[51」并行配置开启](/archives/junit51)||
+|[52」并行配置执行模式](/archives/junit52)||
+|[53」并行配置执行策略](/archives/junit53)||
+|[54」并行配置定义@Execution](/archives/junit54)||
+|[55」并行配置的数据同步](/archives/junit55)||
+|[56」并行配置的数据同步](/archives/junit55)||
+|[57」并行配置的数据同步](/archives/junit55)||
+|[58」并行配置的数据同步](/archives/junit55)||
+|[59」并行配置的数据同步](/archives/junit55)||
+|[60」计算器实战6](/archives/junit55)||
