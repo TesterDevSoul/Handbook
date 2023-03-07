@@ -80,7 +80,8 @@
             
             <h2>目录</h2>
 <ul>
-<li></li>
+<li>DML操作表中数据</li>
+<li>DQL查询表中数据</li>
 </ul>
 
             </section>
@@ -91,7 +92,1059 @@
     
         <section >
             
+            <h2>DML操作表中数据</h2>
+<p>DML 用于对表中的数据进行<strong>增</strong>、<strong>删</strong>、<strong>改</strong>操作。</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
             
+            <h2>插入数据</h2>
+<ul>
+<li>命令模版：「见右侧🫱」
+<ul>
+<li>方式1：插入全部字段， 将所有字段名都写出来。</li>
+<li>方式2：插入全部字段，不写字段名。</li>
+<li>方式3：插入指定字段的值。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">insert into 表名 (字段名1，字段名2...) values(字段值1，字段值2...);
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>准备: 创建学生表</h3>
+<ul>
+<li>表名:student</li>
+<li>表中字段:
+<ul>
+<li>学员ID：sid int</li>
+<li>姓名：sname varchar(20)</li>
+<li>年龄：age int</li>
+<li>性别：sex char(1)</li>
+<li>地址：address varchar(40)</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 插入全部字段</h3>
+<ul>
+<li>插入数据为：
+<ul>
+<li>学员ID：1</li>
+<li>姓名：孙悟空</li>
+<li>年龄：20</li>
+<li>性别：男</li>
+<li>地址：花果山</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 不写字段名插入字段</h3>
+<ul>
+<li>插入数据为：
+<ul>
+<li>学员ID：2</li>
+<li>姓名：孙悟饭</li>
+<li>年龄：10</li>
+<li>性别：男</li>
+<li>地址：地球</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 插入指定字段的值</h3>
+<ul>
+<li>插入数据为：
+<ul>
+<li>姓名：白骨精</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>注意</h3>
+<ol>
+<li>
+<p>值与字段必须要对应，<strong>个数相同</strong> &amp; <strong>数据类型</strong>相同。</p>
+</li>
+<li>
+<p>值的数据大小，必须在字段指定的长度范围内。</p>
+</li>
+<li>
+<p><code>varchar</code> <code>char</code> <code>date</code>类型的值必须使用单引号，或者双引号 包裹。</p>
+</li>
+<li>
+<p>如果要插入空值，可以忽略不写，或者插入<code>null</code>。</p>
+</li>
+<li>
+<p>如果插入指定字段的值，必须要上写列名。</p>
+</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>更改数据</h2>
+<ul>
+<li>不带条件的修改</li>
+<li>带条件的修改</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>不带条件的修改</h3>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+</ul>
+<pre><code class="language-sql">update 表名 set 列名 = 值
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>带条件的修改</h3>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+</ul>
+<pre><code class="language-sql">update 表名 set 列名 = 值 [where 条件表达式:字段名 = 值 ]
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 不带条件修改</h3>
+<ul>
+<li>将所有的性别改为女。「慎用」</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 带条件的修改</h3>
+<ul>
+<li>将sid为 5 的学生，性别改为 男。</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 一次修改多个列</h3>
+<ul>
+<li>将sid为 2 的学员，年龄改为 20，地址改为 北京。</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>删除数据</h2>
+<ul>
+<li>删除所有数据</li>
+<li>指定条件删除数据</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>删除所有数据</h3>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+<li>需求2:
+<ul>
+<li>删除student表中所有数据。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">delete from 表名
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>指定条件删除数据</h3>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+<li>需求1:
+<ul>
+<li>删除student表中 sid 为 1 的数据。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">delete from 表名 [where 字段名 = 值]
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>删除表所有数据</h3>
+<p>有两种做法：</p>
+<ol>
+<li>
+<p><code>delete from 表名</code>。</p>
+</li>
+<li>
+<p><code>truncate table 表名</code>。「推荐」</p>
+</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>DQL 查询表中数据</h2>
+<ul>
+<li>
+<p>数据准备：</p>
+<ul>
+<li>
+<p>创建表。</p>
+</li>
+<li>
+<p>插入数据。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>创建表</h3>
+<p>代码准备，创建员工表:</p>
+<ul>
+<li>表名:emp。</li>
+<li>表中字段:
+<ul>
+<li>员工ID：eid int。</li>
+<li>姓名：ename varchar(20) 。</li>
+<li>性别：sex char(1)。</li>
+<li>薪资：salary double。</li>
+<li>入职时间：hire_date date。</li>
+<li>部门名称：dept_name varchar(10)。</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>插入数据</h3>
+<ul>
+<li>1,孙悟空,男,7200,2013-02-04,教学部。</li>
+<li>2,猪八戒,男,3600,2010-12-02,教学部。</li>
+<li>3,唐僧,男,9000,2008-08-08,教学部。</li>
+<li>4,白骨精,女,5000,2015-10-07,市场部。</li>
+<li>5,蜘蛛精,女,5000,2011-03-14,市场部。</li>
+<li>6,玉兔精,女,200,2000-03-14,市场部。</li>
+<li>7,林黛玉,女,10000,2019-10-07,财务部。</li>
+<li>8,黄蓉,女,3500,2011-09-14,财务部。</li>
+<li>9,吴承恩,男,20000,2000-03-14,NULL。</li>
+<li>10,孙悟饭,男, 10,2020-03-14,财务部。</li>
+<li>11,兔八哥,女, 300,2010-03-14,财务部。</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>查询</h2>
+<ul>
+<li>
+<p>查询包括：<strong>简单查询</strong>和<strong>条件查询</strong>。</p>
+</li>
+<li>
+<p>关键字为： <strong>SELECT</strong>。</p>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>简单查询</h2>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+</ul>
+<pre><code class="language-sql">select 列名 from 表名
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 查询所有数据</h3>
+<p>查询emp中的所有数据。</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 查询部分列</h3>
+<p>查询emp表中的所有记录，仅显示id和name字段。</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 别名查询</h3>
+<ul>
+<li>
+<p>别名查询，使用关键字：<strong>as</strong>。</p>
+</li>
+<li>
+<p>将所有的员工信息查询出来，并将列名改为中文。</p>
+<ul>
+<li>eid ：编号</li>
+<li>ename ：姓名</li>
+<li>sex ：性别</li>
+<li>salary ：薪资</li>
+<li>hire_date：入职时间</li>
+<li>dept_name：部门名称</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 去重查询</h3>
+<ul>
+<li>
+<p>去重查询，使用去重关键字：<strong>DISTINCT</strong>。</p>
+</li>
+<li>
+<p>查询员工表中一共有几个部门。</p>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 运算查询</h3>
+<ul>
+<li>
+<p>运算查询 (查询结果直接参与运算)。</p>
+</li>
+<li>
+<p>将所有员工的工资 +3000 元进行显示。</p>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>条件查询</h2>
+<ul>
+<li>
+<p>先取出表中的每条数据，满足条件的数据就返回，不满足的就过滤掉。</p>
+</li>
+<li>
+<p>命令模版：「见右侧🫱」</p>
+</li>
+</ul>
+<pre><code class="language-sql">select 列名 from 表名 where 条件表达式
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>运算符</h3>
+<ol>
+<li>比较运算符</li>
+<li>逻辑运算符</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>1. 比较运算符</h3>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt; &lt; &gt;= &lt;= = &lt;&gt; !=</code></td>
+<td>大于、小于、大于等于、小于等于、等于、不等于</td>
+</tr>
+<tr>
+<td><code>BETWEEN ...AND...</code></td>
+<td>显示在某一区间的值</td>
+</tr>
+<tr>
+<td><code>IN(集合)</code></td>
+<td>集合表示多个值,使用逗号分隔</td>
+</tr>
+<tr>
+<td><code>LIKE '%张%'</code></td>
+<td>模糊查询</td>
+</tr>
+<tr>
+<td><code>IS NULL</code></td>
+<td>查询某一列为NULL的值,注:不能写 <code>= NULL</code></td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>2.逻辑运算符</h3>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>And &amp;&amp;</code></td>
+<td>多个条件同时成立。</td>
+</tr>
+<tr>
+<td><code>Or \|\|</code></td>
+<td>多个条件任一成立。</td>
+</tr>
+<tr>
+<td><code>Not</code></td>
+<td>不成立，取反。</td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<ol>
+<li>
+<p>查询员工<strong>姓名</strong>为<strong>黄蓉</strong>的员工信息。</p>
+</li>
+<li>
+<p>查询<strong>薪水</strong>价格为<strong>5000</strong>的员工信息。</p>
+</li>
+<li>
+<p>查询<strong>薪水</strong>价格<strong>不是5000</strong>的所有员工信息。</p>
+</li>
+<li>
+<p>查询<strong>薪水</strong>价格<strong>大于6000</strong>元的所有员工信息。</p>
+</li>
+<li>
+<p>查询<strong>薪水</strong>价格<strong>在5000到10000之间</strong>所有员工信息。</p>
+</li>
+<li>
+<p>查询<strong>薪水</strong>价格<strong>是3600或7200或者20000</strong>的所有员工信息。</p>
+</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%</td>
+<td>表示匹配任意 <strong>多个</strong> 字符串</td>
+</tr>
+<tr>
+<td>_</td>
+<td>表示匹配 <strong>一个</strong> 字符</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>查询<strong>含有</strong>’<strong>精</strong>’字的所有员工信息。</p>
+</li>
+<li>
+<p>查询以’<strong>孙</strong>’<strong>开头</strong>的所有员工信息。</p>
+</li>
+<li>
+<p>查询第<strong>二</strong>个字为’<strong>兔</strong>’的所有员工信息。</p>
+</li>
+<li>
+<p>查询<strong>没有部门</strong>的员工信息。</p>
+</li>
+<li>
+<p>查询<strong>有部门</strong>的员工信息。</p>
+</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>查询总结</h2>
+<pre><code class="language-sql">-- 查询表中的所有数据
+SELECT * FROM table_name;
+
+-- 查询表中指定的列
+-- “column1”和“column2”是要查询的列名。
+SELECT column1, column2 FROM table_name;
+
+-- 查询满足指定条件的行
+-- “condition”是查询条件，例如“age &gt; 18”表示查询年龄大于18岁的行。
+SELECT * FROM table_name WHERE condition;
+
+-- 对查询结果进行排序
+-- “column_name”是要排序的列名，[ASC|DESC]表示升序或降序排列。
+SELECT * FROM table_name ORDER BY column_name [ASC|DESC];
+
+
+-- 对查询结果进行分组和聚合计算
+-- “column1”是要分组的列名，
+-- aggregate_function可以是SUM、AVG、COUNT等聚合函数，
+-- 用于对指定列进行计算。
+SELECT column1, aggregate_function(column2) FROM table_name GROUP BY column1;
+
+-- 查询满足多个条件的行
+-- “condition1”和“condition2”是查询条件，AND表示同时满足两个条件。
+SELECT * FROM table_name WHERE condition1 AND condition2;
+
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>DQL操作单表</h2>
+<ul>
+<li>排序</li>
+<li>聚合函数</li>
+<li>分组</li>
+<li>分页</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>排序</h2>
+<ul>
+<li>
+<p><code>ORDER BY</code>：排序只是显示效果,不会影响真实数据。</p>
+</li>
+<li>
+<p>命令模版：「见右侧🫱」</p>
+<ul>
+<li>
+<p>ASC：表示升序排序(默认) 。</p>
+</li>
+<li>
+<p>DESC：表示降序排序。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>排序方式：单列排序、组合排序</p>
+</li>
+</ul>
+<pre><code class="language-sql">SELECT 字段名 FROM 表名 [WHERE 字段 = 值] ORDER BY 字段名 [ASC / DESC]
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求：单列排序</h3>
+<ul>
+<li>
+<p>使用 <strong>salary</strong> 字段,对emp表数据进行升序排序。</p>
+</li>
+<li>
+<p>使用 <strong>salary</strong> 字段,对emp表数据进行降序排序。</p>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求：组合排序</h3>
+<p>在<strong>薪水</strong>降序排序的基础上,再使用<strong>id</strong>进行排序, 如果薪水相同就以id做<strong>降序</strong>排序。</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>聚合函数</h2>
+<ul>
+<li>
+<p><strong>纵向查询</strong></p>
+</li>
+<li>
+<p><strong>对某一列的值进行计算</strong>。</p>
+</li>
+<li>
+<p>命令模版：「见右侧🫱」</p>
+</li>
+</ul>
+<pre><code class="language-sql">SELECT 聚合函数(字段名) FROM 表名;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>常用的聚合函数</h3>
+<table>
+<thead>
+<tr>
+<th>聚合函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code>(字段)</td>
+<td>统计列<strong>不为NULL</strong>的行数</td>
+</tr>
+<tr>
+<td><code>sum</code>(字段)</td>
+<td>计算指定列的数值<strong>和</strong></td>
+</tr>
+<tr>
+<td><code>max</code>(字段)</td>
+<td>计算指定列的最<strong>大</strong>值</td>
+</tr>
+<tr>
+<td><code>min</code>(字段)</td>
+<td>计算指定列的最<strong>小</strong>值</td>
+</tr>
+<tr>
+<td><code>avg</code>(字段)</td>
+<td>计算指定列的<strong>平均</strong>值</td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>SUM函数</h3>
+<ul>
+<li>用于对某一列的数值进行求和计算。基本语法：</li>
+<li>需求：
+<ul>
+<li>订单表orders，其中包含订单编号order_id和订单金额amount两个列。</li>
+<li>使用SQL查询语句对订单金额进行求和计算。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">-- column_name是要进行求和计算的列名。
+SELECT SUM(column_name) FROM table_name;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>AVG函数</h3>
+<ul>
+<li>用于对某一列的数值进行平均值计算。基本语法：</li>
+<li>需求：
+<ul>
+<li>学生表students，其中包含学生姓名name、学生年龄age和学生成绩score三个列。</li>
+<li>SQL查询语句对学生成绩进行平均值计算。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">-- column_name是要进行平均值计算的列名。
+SELECT AVG(column_name) FROM table_name;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>COUNT函数</h3>
+<ul>
+<li>用于对某一列的数据进行计数操作。基本语法：</li>
+<li>需求：
+<ul>
+<li>学生表students，其中包含学生姓名name、学生年龄age和学生成绩score三个。</li>
+<li>查询语句对学生数量进行计数。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">-- column_name是要进行计数操作的列名。
+SELECT COUNT(column_name) FROM table_name;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MIN函数和MAX函数</h3>
+<ul>
+<li>MIN函数用于对某一列的数据进行最小值计算。</li>
+<li>MAX函数用于对某一列的数据进行最大值计算。</li>
+<li>基本语法：</li>
+<li>需求：
+<ul>
+<li>订单表orders，其中包含订单编号order_id和订单金额amount两个列。</li>
+<li>查询语句对订单金额进行最小值和最大值计算。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">-- column_name是要进行最小值或最大值计算的列名。
+SELECT MIN(column_name) FROM table_name;
+SELECT MAX(column_name) FROM table_name;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<ol>
+<li>查询员工的总数。</li>
+<li>查看员工总薪水、最高薪水、最小薪水、薪水的平均值。</li>
+<li>查询薪水大于4000员工的个数。</li>
+<li>查询部门为’教学部’的所有员工的个数。</li>
+<li>查询部门为’市场部’所有员工的平均薪水，显示为：市场部平均薪资。</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>分组</h2>
+<ul>
+<li>
+<p><strong>GROUP BY</strong>：对查询的信息进行分组，相同数据作为一组。</p>
+</li>
+<li>
+<p>命令模版：「见右侧🫱」</p>
+</li>
+<li>
+<p>需求：</p>
+<ul>
+<li>学生成绩表scores，其中包含姓名name、科目subject和成绩score三列。- 科目对成绩进行分组，并且分别计算成绩平均值、成绩总和。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">SELECT column1, column2, aggregate_function(column3)
+FROM table_name
+WHERE condition
+GROUP BY column1, column2;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<p>通过<strong>性别字段</strong>进行分组，求各组的平均薪资。</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<ol>
+<li>
+<p>查询emp有几个部门。</p>
+</li>
+<li>
+<p>查询emp每个部门的平均薪资。</p>
+</li>
+<li>
+<p>查询emp每个部门的平均薪资, 部门名称不能为null。</p>
+</li>
+<li>
+<p>查询平均薪资大于6000的部门，部门名称不能为null。</p>
+</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>limit关键字</h2>
+<ul>
+<li>命令模版：「见右侧🫱」</li>
+<li>需求：
+<ul>
+<li>学生表students，其中包含学生姓名name、学生年龄age和学生成绩score三个列。</li>
+<li>使用SQL查询语句获取前10个学生的信息。</li>
+<li>使用SQL查询语句获取第11到第20个学生的信息。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">-- offset 起始行数, 从0开始记数, 如果省略 则默认为 0.
+-- count 返回的行数
+SELECT 字段1,字段2... FROM 表名 LIMIT offset , count;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求</h3>
+<ol>
+<li>查询emp表中的前 5条数据。</li>
+<li>查询emp表中从第4条开始,查询6条。</li>
+</ol>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>需求: 分页操作</h3>
+<p>每页显示3条数据，第一页SQL，第二页SQL，第三页SQL语句分别如何写？</p>
+
             </section>
     
 
