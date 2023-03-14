@@ -28,20 +28,66 @@
 2. 使用`Allure.addLink()`方法。
     >除了使用`@Link`注解之外，还可以在测试方法中使用`Allure.addLinkv`方法来添加链接。<br>与`@Link`注解不同的是，`Allure.addLink()`方法可以 **动态添加链接**，并且可以 **添加多个链接**。
 
-### @Link注解添加
+### 注解方式添加
 
 @Link注解用于将外部资源链接到测试用例中，例如：bug跟踪工具、需求跟踪工具等。
 
 步骤的代码示例：
 
+```java
+public class LinkAnTest {
+    //使用@Link注解为测试用例添加了一个名为“百度首页”的链接，
+    //链接的类型为“mylink”
+    // 链接地址为“https://www.baidu.com/”。
+    @Link(name = "百度首页", type = "mylink", url = "https://www.baidu.com/")
+    @Test
+    public void testBaiduHomePage(TestInfo testInfo) {
+        Link link = testInfo.getTestMethod().get().getAnnotation(Link.class);
+        String name = link.name();
+        String url = link.url();
+        System.out.println("name:" +name);
+        System.out.println("url:" +url);
+        assertEquals("https://www.baidu.com/", url, name + "错误");
+    }
+}
+```
+>使用反射获取了当前测试方法上的`@Link`注解，并获取了注解中的**名称**和**链接**地址。<br>需要注意的是，获取**注解内容**时需要使用**Java反射机制**，即通过 **Class和Method对象来获取注解内容**。
 
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230314175055.png)
 
-在`Allure2`报告中，将会显示一个“`Links`”部分，其中包含了链接名称、链接类型和链接URL。用户可以通过点击链接跳转到指定的URL。
+在`Allure2`报告中，将会显示一个“`Links`”部分，包含了链接名称，用户可以通过点击链接跳转到指定的`URL`。
 
-需要注意的是，如果需要在测试类的多个测试方法中使用同一个链接，可以将@Link注解添加到测试类上，而不是每个测试方法中。例如：
+需要注意的是，如果需要在 **测试类的多个测试方法中使用同一个链接**，可以将`@Link`注解添加到测试类上，而不是每个测试方法中。
+
+例如：
+```java
+@DisplayName("链接添加验证")
+@Link(name = "腾讯首页", type = "mylink", url = "https://www.qq.com/")
+public class LinkAnTest {
+    @Link(name = "百度首页", type = "mylink", url = "https://www.baidu.com/")
+    @Test
+    public void testBaiduHomePage(TestInfo testInfo) {
+        Link link = testInfo.getTestMethod().get().getAnnotation(Link.class);
+        String name = link.name();
+        String url = link.url();
+        System.out.println("name:" +name);
+        System.out.println("url:" +url);
+        assertEquals("https://www.baidu.com/", url, name + "错误");
+    }
+    @Test
+    public void testAdd() {
+        int result = 8 + 9;
+        assertEquals(17,result,"8 + 9的计算结果失败");
+    }
+}
+```
+![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230314175517.png)
 
 
 
 
 将@Link注解添加到了测试类上，这将为测试类中的所有测试方法添加同一个链接。
 
+### 方法直接添加
+
+`Allure.addLink()`方法是`Allure`框架提供的一个方法，用于在测试报告中添加链接。该方法可以**动态添加链接**，并且可以**添加多个链接**。

@@ -23,7 +23,7 @@ Allure提供了多种方式来添加测试用例步骤，其中一些常用的�
 
 
 
-### step()添加
+### 方法直接添加
 
 步骤的代码示例：
 
@@ -63,7 +63,7 @@ public class StepMethodTest {
 
 ![](https://cdn.jsdelivr.net/gh/TesterDevSoul/pic/manual/20230314153545.png)
 
-### @Step注解添加
+### 注解方式添加
 
 `@Step`注解是`Allure`提供的注解之一，可以用于标记测试用例的每个步骤。
 
